@@ -14,7 +14,7 @@ function ejecutarArtyom() {
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
         listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador de Artyom, pues usamos annyang para ese propósito !
         debug: true, // Muestra un informe en la consola
-        speed: 1.3 // Velocidad normal con  1
+        speed: 1.0 // Velocidad normal con  1
         
         });
         
@@ -31,11 +31,11 @@ function ejecutar_ayuda() {
 
 function ejecutar_ayuda_subir(){
 
-    artyom.say('Los datos a introducir son: título, autor, fecha, categoría, resumen, introducción, contenido, conclusiones, referencias, subir archivo, al final se envia todo pronunciando, enviar publicación. Para crear varios párrafos de texto con citas, para el caso de categoría, resumen, introducción, contenido, conclusiones, referencias pronuncia. Ejm elemento número (seguido del número de elemento), seguido del tipo de input luego con: seguido de la información a suministrar, un ejemplo básico para crear el primer elemento de resumen sería: elemento número 1 de resumen con. Seguido del dictado de texto, para crear una cita pronuncia, crear cita para, seguido del input ya sea este resumen, introducción, contenido, conclusiones. Para referencicas, pronuncia, crear referencia');
+    artyom.say('Los datos a introducir son: título, autor, fecha, categoría, resumen, introducción, contenido, conclusiones, referencias, subir archivo, al final se envia todo pronunciando, enviar publicación. Para crear varios párrafos de texto con citas, para el caso de categoría, resumen, introducción, contenido, conclusiones, referencias pronuncia. Ejm elemento  (seguido del número de elemento), seguido del tipo de input luego con: seguido de la información a suministrar, un ejemplo básico para crear el primer elemento de resumen sería: elemento 1 de resumen con. Seguido del dictado de texto, para crear una cita pronuncia, crear cita para, seguido del input ya sea este resumen, introducción, contenido, conclusiones. Para referencicas, pronuncia, crear referencia');
 }
 function ejecutar_ayuda_texto(){
 
-    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto, para el caso de pegar un texto en algún input, pronunciar pegar  texto elemento número seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer input de resumen, sería, pegar texto en elemento número 1 de resumen, nota: también se puede aplicar este proceso para los comentarios. Nota 2: La creación de texto se hace de forma iterativa, ejm comando, crear texto para acumular varias palabras e ir pegándolo con el deletreo y de esta forma crear frases complejas, para borrar ya sea para texto, deletrear, se pronuncia borrar seguido de alguno de ellos");
+    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto, para el caso de pegar un texto en algún input, pronunciar pegar  texto elemento número seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer input de resumen, sería, pegar texto en elemento 1 de resumen, nota: también se puede aplicar este proceso para los comentarios. Nota 2: La creación de texto se hace de forma iterativa, ejm comando, crear texto para acumular varias palabras e ir pegándolo con el deletreo y de esta forma crear frases complejas, para borrar ya sea para texto, deletrear, se pronuncia borrar seguido de alguno de ellos");
 }
 function ejecutar_ayuda_sistema_hibrido(){
     artyom.say("Para utilizar el teclado braille para suministrar texto y para enfocar elementos con la voz, pronuncia ejemplo, enfocar elemento 1 de resumen, esto posicionará el cursor en el primer elemento de la categoría de resumen, esto aplica para cualquier input concreto");
@@ -454,7 +454,7 @@ if (annyang) {
 
         }, // Para invocar todos los imput de registro
 
-        'elemento número *num de *tipoInput con *val': (num,tipoInput,val) => {
+        'elemento *num de *tipoInput con *val': (num,tipoInput,val) => {
             /* Se puede escribir en los inputs del formulario y sobre los comentarios de una publicación */
             val=val.charAt(0).toUpperCase() + val.slice(1);
             if(tipoInput==="titulo"||tipoInput==="Titulo"||tipoInput==="título"||tipoInput==="Título")
@@ -529,14 +529,14 @@ if (annyang) {
                     artyom.say("Enfocado en"+ tipoInput+" elemento "+(num+1));
                     document.getElementById(tipoInput+ espacio+ num).focus();
             }else{
-                    artyom.say("El imput no existe, volver a intentar");
+                    artyom.say("El input no existe, volver a intentar");
                     console.log("El número de elemento es "+num+". El input es: "+tipoInput);
     
             }
               
 
         },
-        'pegar *tipoText en elemento número *num de *tipoInput': (tipoText,num,tipoInput) => {
+        'pegar *tipoText en elemento *num de *tipoInput': (tipoText,num,tipoInput) => {
 
             if(tipoText==="texto")
                 val=texto;
@@ -651,7 +651,7 @@ if (annyang) {
        num=num.trim();
        if(num==='una'){
 
-        num=num.replace('una','1');
+        num=num.replace('una','1').replace('un','1');
        }else{
        
        }
@@ -691,7 +691,7 @@ if (annyang) {
 
     annyang.addCommands(commands);
 
-    // Empezamos la escucha
+    // Empezamos la escucha  annyang.start({ autoRestart:true, continuous:false});   en https
     annyang.start();
 }
 if (!annyang) {

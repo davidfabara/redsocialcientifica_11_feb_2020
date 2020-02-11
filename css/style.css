@@ -9,6 +9,7 @@
 }
 
 body{
+	zoom: 80%;
 	font-family: "Arial", verdana;
 	background-color: rgba(128, 98, 32, 0.719);
 	bottom: 0;
@@ -26,6 +27,7 @@ body{
 header{
 	/*position: fixed;
 	top: 0;*/
+	zoom: 80%;
 	box-sizing: border-box;
 	width: 100%;
 	background:rgba(179, 155, 103, 0.719);
@@ -432,6 +434,7 @@ float: right;
 
 
 .publicacion{
+	text-align: justify;
 	max-width: 60%;
 	margin: auto;
     font-size: 30px;

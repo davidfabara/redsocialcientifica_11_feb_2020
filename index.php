@@ -146,10 +146,10 @@
 	}
 	$amigos = amigos::codigos_amigos($_SESSION['CodUsua']);
 	if(!empty($_GET['buscar'])){
-	$post = post::mostrarTodo_busqueda($_GET['buscar']);
+		$post = post::mostrarTodo_busqueda($_GET['buscar']);
 		
 	}else{
-	$post = post::mostrarTodo($amigos[0]['amigos']);
+		$post = post::mostrarTodo($amigos[0]['amigos']);
 	}
 	/*
 		$_GET['buscar'], se recibe desde buscar.php, con el objetivo de filtrar las busquedas basadas en el contenido
@@ -202,7 +202,7 @@
 
 			/*
 				En la función agregar de clase mg es en donde se insertarán los me gusta efectuados en publicacion.php para luego en
-				notificaciones::agregar registrar la notificacion, peri si ya se ha puesto me gusta, no pasaremos por este condicional
+				notificaciones::agregar registrar la notificación, perfil si ya se ha puesto me gusta, no pasaremos por este condicional
 				mas sera por ==2. En mg::agregar se procesa SQL de "insert into mg(CodLike, CodPost, CodUsua) values(null, :CodPost,
 				:CodUsua)"); 
 			*/
@@ -211,8 +211,8 @@
 
 			header('location: index.php');
 			/*
-				false, es un valor que da lo mismo poner 0 para el argumento que se recibira como parametro sobre $accion (0 implica
-				que es necesario establecer una notificacion). En notificaciones::agregar function agregar($accion, $CodPost, $CodUsua)
+				false, es un valor que da lo mismo poner 0 para el argumento que se recibirá como parametró sobre $accion (0 implica
+				que es necesario establecer una notificación). En notificaciones::agregar function agregar($accion, $CodPost, $CodUsua)
 				, se invoca a la consulta SQL con "insert into notificaciones(CodNot, accion, CodPost, CodUsua, visto) values(null,
 				:accion, :CodPost, :CodUsua, 0)");
 			*/

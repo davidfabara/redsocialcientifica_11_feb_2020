@@ -13,7 +13,7 @@ function ejecutarArtyom() {
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
         listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador !
         debug: true, // Muestra un informe en la consola
-        speed: 1.3 // Velocidad normal con  1
+        speed: 1.0 // Velocidad normal con  1
         
         });
         
@@ -30,7 +30,7 @@ function ejecutar_ayuda() {
 
 function ejecutar_ayuda_texto(){
 
-    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto, para el caso de pegar un texto en algún input, pronunciar pegar seguido de la palabra texto o deletrear seguido de la palabra elemento seguido de la palabra número seguido del número de elemento seguido del nombre del imput, ejm para pegar el texto creado en el primer comentario, sería, pegar texto en elemento número 1 de comentario.");
+    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto,para corregir un texto creado, pronuncia, corregir texto, para el caso de pegar un texto en algún input, pronunciar pegar seguido de la palabra texto o deletrear seguido de la palabra elemento seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer comentario, sería, pegar texto en elemento 1 de comentario.");
 }
 function ejecutar_ayuda_comentar(){
 
@@ -417,7 +417,7 @@ if (annyang) {
             $("#submit-input").click();
 
         }, // Para invocar todos los imput de registro
-        'elemento número *num de *tipoInput con *val': (num,tipoInput,val) => {
+        'elemento *num de *tipoInput con *val': (num,tipoInput,val) => {
             /* Se puede escribir en los inputs del formulario y sobre los comentarios de una publicación */
 
             if(tipoInput==="comentario"||tipoInput==="Comentario")
@@ -425,7 +425,7 @@ if (annyang) {
               
 
         },
-        'pegar *tipoText en elemento número *num de *tipoInput': (tipoText,num,tipoInput) => {
+        'pegar *tipoText en elemento *num de *tipoInput': (tipoText,num,tipoInput) => {
             if(tipoText==="texto")
                 val=texto;
             if(tipoText==="deletrear")

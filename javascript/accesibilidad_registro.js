@@ -10,7 +10,7 @@ function ejecutarArtyom() {
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
         listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador !
         debug: true, // Muestra un informe en la consola
-        speed: 1.3 // Velocidad normal con  1
+        speed: 1.0 // Velocidad normal con  1
         
         });
         

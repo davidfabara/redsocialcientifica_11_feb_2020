@@ -45,7 +45,7 @@
 	 
 	<script src="javascript/librerias/artyom.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-	<script src="https://code.responsivevoice.org/responsivevoice.js?key=7RpgTxHY"></script>
+	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 	<script type="text/javascript" src="javascript/accesibilidad_reproducir_contenido.js"></script>
 
 

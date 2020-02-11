@@ -3,12 +3,12 @@
 function conexion()
 {
 	try {
-	try {
-        $usuario='3316681_red';
-		$pass='davidfabara1';
+		$usuario='root';
+		$pass='';
 
-		$con = new PDO('mysql:host=pdb46.awardspace.net;dbname=3316681_red', $usuario, $pass);
+		$con = new PDO('mysql:host=localhost;dbname=red_social', $usuario, $pass);
 		return $con; // Se crea una instancia de PDO para con $con asignarle la conexion a la base de datos tanto usuario como contraseña podrian establecer unicidad
+		
 	} catch (PDOException $e) {
 		return $e->getMessage();
 	}

@@ -1,0 +1,990 @@
+
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    background-color: black;
+    color:white;
+
+	
+}
+
+
+body{
+	font-family: "Arial", verdana;
+
+	bottom: 0;
+    left: 0;
+	right: 0;
+	z-index: 3;
+}
+
+
+/********************************************************************************
+***************************   CABECERA    ***************************************
+********************************************************************************/
+
+
+header{
+	/*position: fixed;
+	top: 0;*/
+	box-sizing: border-box;
+	width: 100%;
+	background:black;
+	color: white;
+	/* rgba(216, 191, 137, 0.719);*/
+	/*#2c3e50*/
+	padding: 2px;
+	padding: 1% 1%;
+	
+	 /*z-index: 100;*/
+
+}
+
+header  .titulo{
+	display: inline-block;
+	color:white;
+   
+
+}
+
+nav{
+	/*display: inline-block;*/
+	margin-right: 40px;
+	float: right;
+}
+
+#buscar{
+	display: inline-block;
+	width: 50%;
+	height:10%;
+	margin-left: 10px;
+	
+	color:white;
+	font-size: 1em;
+}
+#buscar label {
+	
+	display: inline-block;
+	width: 70%;
+	color:white;
+	font-size: 1em;
+}
+
+#buscar input{
+	display: inline-block;
+	width: 50%;
+	height:15%;
+	
+
+	color:white;
+	font-size: 1em;
+	
+
+}
+
+#buscar input:focus{
+	outline: none;
+	font-size: 4em;
+    width: 70%;
+    z-index: 2;
+    box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+    /*float:left;*/
+    text-align: left;
+    color:white;
+    
+	
+}
+
+nav > ul > li{			
+	list-style: none;
+	float: left;
+	position: relative;
+}
+
+nav ul li a,
+nav ul li>span
+{
+	display: block;
+	/*margin-top: 5px;*/
+	padding: 10px;
+	text-decoration: none;
+	color:white;
+	border-radius: 3px;
+	font-size: 1em;   /*10px 5px 7px 5px*/
+	font-weight: bold;
+}
+
+nav ul li a span{
+	font-size: 17px;
+}
+
+nav ul li a:hover,
+nav ul li span:hover {
+	background: #EFEFFB;
+	color: #000;
+}
+
+
+/******************************************************
+****************    NAV MENSAJE    *******************
+******************************************************/
+
+header nav .nav-mensaje{
+	position: relative;
+}
+
+
+header nav .no-leido{
+	position: absolute;
+	top: 1px;
+	left: 8px;
+	background: #964545;
+	color:white;
+	font-size: 11px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-left: 4px;
+	padding: 0px 4px;
+	
+	font-weight: bold;
+	z-index: 1;
+    
+}
+
+
+/*********************************************/
+
+
+/******************************************************
+*********   SOLICITUD DE AMISTAD   *******
+******************************************************/
+
+#info-solicitud #nav-solicitud {
+    visibility: hidden;
+    width: 235px;
+    background-color: rgba(216, 191, 137, 0.719);
+   
+    top: 40px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1; /* a-index determinara la importancia de este recuadro que en este caso se superpondra a la interfaz principal u otro elemento que tenga un z-index inferior*/
+}
+
+header nav #info-solicitud:hover #nav-solicitud{
+	visibility: visible; /*Al pasar el mouse por el icono de las solicitudes de amistad, con la propiedad hover hacemos que se visualicen lo que en #info-solicitud #nav-solicitud permanecian escondidas*/
+}
+
+#nav-solicitud li{
+	list-style: none;
+}
+
+
+#nav-solicitud li a{
+	 color:white;
+}
+
+#nav-solicitud li a:hover{
+	background: #2c3e50;
+	color:white;
+}
+
+#nav-solicitud::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 7%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(216, 191, 137, 0.719) transparent;
+} 
+
+
+#solicitud-confirmar{
+	width: 90%;
+}
+
+#solicitud-confirmar li{
+	display: inline-block;
+}
+
+
+
+/*****************************************************
+************    INFO NOTIFICACIONES      *************
+*****************************************************/
+
+#info-notificaciones #nav-notificaciones {
+   visibility: hidden;
+    width: 335px;
+    background-color: rgba(216, 191, 137, 0.719);
+   
+    top: 40px;
+ 	right: -150px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+header nav #info-notificaciones:hover #nav-notificaciones{
+	visibility: visible;
+	
+}
+
+#nav-notificaciones li{
+	list-style: none;
+}
+
+
+#nav-notificaciones li a{
+	font-size: 1em;
+	 color:white;
+}
+
+
+
+#nav-notificaciones li a:hover, #nav-notificaciones li a:hover p{
+	background: #2c3e50;
+	color:white;
+	font-size: 1.5em;
+}
+
+#nav-notificaciones li a p{
+	font-size: 1em;
+	 color:white;;
+	 font-weight: bold;
+}
+
+#nav-notificaciones::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /*  */
+    left: 48%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(216, 191, 137, 0.719) transparent;
+    
+} 
+
+
+/******************************************************
+****************LISTA ABAJO****************************
+******************************************************/
+
+#nav-perfil {
+    visibility: hidden;
+    width: 135px;
+    background-color: rgba(216, 191, 137, 0.719);
+   
+    top: 40px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+header nav .info_usuario:hover #nav-perfil{
+	visibility: visible;
+   
+    
+}
+
+#nav-perfil li{
+	list-style: none;
+}
+
+
+#nav-perfil li a{
+	 color:white;
+}
+
+#nav-perfil li a:hover{
+	background: #2c3e50;
+	color:white;
+	font-size: 2em;
+}
+
+#nav-perfil::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /*  */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(216, 191, 137, 0.719) transparent;
+}
+
+/******************************************************
+****************   PERFIL    *************************
+******************************************************/
+
+
+#perfil{
+	margin: 10px auto;
+	/*background: rgba(216, 191, 137, 0.719);*/
+	width: 60%;
+	overflow: hidden;
+	border-radius: 20px;
+    box-shadow: 20px 25px 30px rgba(0, 0, 0, 0.44);
+}
+
+#perfil > ul li{
+	list-style: none;
+}
+
+#perfil > ul > li{
+	float: left;
+	box-sizing: border-box;
+	padding: 2% 3%;
+	width: 30%;
+	
+}
+
+
+#perfil > ul > li > ul li{
+	list-style: none;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+#perfil > ul > li > ul li:hover{
+	list-style: none;
+	margin-top: 0px;
+	margin-left: 10px;
+	width: 100%;
+	font-size: 2em
+}
+
+
+#perfil #img{
+	width: 150px;
+    height: 150px;
+	border-radius: 30px;
+    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.44);
+}
+#perfil #img:hover{
+    position: absolute;
+	width: 250px;
+    height: 220px;
+	/*border-radius: 30px;*/
+    box-shadow: 18px 25px 25px rgba(0, 0, 0, 0.49);
+    z-index: auto;
+}
+
+
+#perfil > ul li a.editar-acceso{
+	padding: 2% 3%;
+	background: #856c18;
+	color:white;
+	border-radius: 5px;
+	font-weight: bold;
+	text-decoration: none;
+    
+}
+
+#perfil>ul li label {
+float: right;
+
+}
+#perfil > ul li a:hover{
+	padding: 2% 3%;
+
+	border-radius: 5px;
+	font-weight: bold;
+	width: 30%;
+	font-size: 2em;
+	text-decoration: none;
+    
+}
+
+
+
+#perfil > ul li >span{
+    position:absolute;
+	padding: 3px;
+	background: rgba(20, 14, 3, 0);
+	color:white;
+	margin-left: 10px;
+    z-index: auto;
+}
+
+
+
+
+
+/********************************************************************************
+***************************   PUBLICACION    ************************************
+********************************************************************************/
+
+
+
+
+
+
+.publicacion{
+	max-width: 60%;
+	margin: auto;
+    font-size: 30px;
+	background: rgba(216, 191, 137, 0.719);
+	margin-top: 15px;
+	margin-bottom: 5px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+    font-size: 30px;
+    box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+    
+}
+.publicacion:hover{
+	max-width: 60%;
+    font-size:60px;
+	margin: auto;
+	background: rgba(216, 191, 137, 0.719);
+	margin-top: 15px;
+	margin-bottom: 5px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+    box-shadow: 30px 35px 40px rgba(0, 0, 0, 0.44);
+}
+
+section .publicaciones{
+	margin-top: 45px;
+}
+
+.publi-info-perfil{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 7px 10px 7px 10px;
+		
+}
+.publi-info-perfil .publi-img-perfil{
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	
+}
+publi-info-perfil .publi-img-perfil :hover{
+	width: 200px;
+	height: 200px;
+	box-sizing: border-box;
+
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+.publicacion .publi-img-perfil{
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+
+.publicacion .publi-img-perfil:hover{
+	width: 200px;
+	height: 200px;
+	box-sizing: border-box;
+
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+ a.nombre-usuario{
+	text-align: center;
+	margin-bottom: 10px;
+	text-decoration: none;
+	color:white;
+	font-size: 20px;
+}
+.publicacion a.nombre-usuario:hover{
+	text-align: center;
+	margin-bottom: 10px;
+	text-decoration: none;
+	color:white;
+	font-size: 50px;
+    /*Para aumentar el nombre del usuario en una publicacion*/
+}
+
+.publi-thumb {
+	 /*El zoom de las imagenes si es 100% se mostrara el 100% de la imagen*/
+	width: 50%;
+	margin: auto;
+	margin-bottom: 30px;
+	outline:5px solid rgba(255,255,255,0);
+	/*-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.8);
+	box-shadow: 2px 2px 3px rgba(0,0,0,.8);
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease; */
+}
+.publi-thumb:hover {
+	/*El zoom de las imagenes si es 100% se mostrara el 100% de la imagen*/
+	width: 90%;
+	margin: auto;
+    box-shadow: 30px 35px 40px rgba(0, 0, 0, 0.44);
+}
+
+
+
+.publi-contenido{
+	margin: 5px 5px 10px 10px;
+	font-style: inherit;
+	font-size: 1.5ex;
+	color:white;
+	font-weight: lighter;
+	font-family: 'proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+
+
+
+
+.publicacion .like{
+	padding: 15px;
+	/*border-top: 1px solid blue;
+	border-bottom: 1px solid blue;*/
+}
+
+.publicacion .like a{
+	font-size: 27px;
+    
+}
+
+
+.publicacion .like a:hover{
+	text-decoration: underline;
+}
+
+.publi-contene-like{
+	border-top: 1px solid #ccc;
+	padding: 10px;
+}
+
+.publicacion .comentario{
+	display: inline-block;
+}
+
+.publicacion .comentario input, .subir .contenidos{
+	padding: 17px;
+	border-style: none;
+	font-size: 20px;
+	width: 120%; 	
+}
+
+
+.conteo-like{
+	margin-left: 10px;
+	margin-bottom: 7px;
+	color:white;
+	
+	font-weight: bold;
+
+}
+.conteo-denuncia {
+	margin-left: 10px;
+	margin-bottom: 7px;
+	color:white;
+
+	font-weight: bold;
+
+}
+
+.comentario-nombre
+{
+	margin-left: 10px;
+	margin-bottom: 7px;
+	color:white;
+
+	font-weight: bold;
+
+
+
+}
+.comentario-nombre:hover{
+    font-size: 1.5em;
+}
+
+
+.comentario-nombre .comentarios{
+	font: inherit;
+	font-size: 1em;
+	color:white;
+	font-weight: lighter;
+	font-family: 'proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.publicacion .comentario-nombre .comentarios:hover{
+    max-width: 100%;
+	font: inherit;
+	font-size: 1.5em;
+	color:white;
+	font-weight: lighter;
+	font-family: 'proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.publicacion .comentario input:focus{
+	*outline: none;
+    font-size: 1em;
+}
+.publicacion .comentario:hover{
+	*outline: none;
+    font-size: 2em;
+}
+
+
+
+
+
+/******************************************************
+****************SUBIR DOCUMENTOS****************************
+******************************************************/
+
+
+.subir{
+	width: 80%;
+	background: rgba(216, 191, 137, 0.719);
+	margin: auto;
+	border-radius: 20px;
+    border-bottom-left-radius: 20px;
+	margin-top: 15px;
+	box-shadow: 40px 35px 40px rgba(0, 0, 0, 0.44);
+}
+
+
+
+.subir form{
+	border-top: 1px solid #2c3e50;
+
+}
+.subir .label:focus{
+	outline: none;
+	font-size: 70px;
+}
+
+
+
+.subir .contenidos{
+	padding: 5px;
+	border-style: none;
+	font-size: 1em;
+	width: 90%; 	
+}
+
+.subir .contenidos:focus{
+	outline: none;
+    font-size: 6em;
+    /*Al mantener presionado se puede aumentar el tamano del espacio para ingrezar texto*/
+}
+.subir #alt:focus{
+	outline: none;
+    font-size: 17px
+    /*Al mantener presionado se puede aumentar el tamano del espacio para ingrezar texto*/
+}
+
+
+
+.boton{
+   background:  rgba(192, 152, 67, 0.719);
+	color:white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1em; 
+	display:block;
+	margin-left: auto;
+  	margin-right: auto; 
+}
+
+
+.boton:hover{
+	background:  rgba(192, 152, 67, 0.719);
+	 color:white;
+	 padding: 5px 10px;
+	 border-radius: 5px;
+	 cursor: pointer; 
+	 font-size: 3em;
+	 display:block;
+	 margin-left: auto;
+  	 margin-right: auto;  
+}
+
+.categoria{
+	width: 90%;
+	font-size: 2em;
+}
+
+.categoria:focus{
+	position: relative;
+	font-size: 2em;
+	/* Es acumulativo, 2em+2em=4em*/
+}
+.categoria #opcion{
+	
+	width: 90%;
+	font-size: 2em;
+}
+
+
+
+/************************************************************************
+****************BUSCAR:  USUARIO ****************************************
+************************************************************************/
+
+
+.resultados-busqueda{
+	width: 50%;
+	margin: auto;
+	margin-top: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.resultados-busqueda .usuarios{
+
+	background: rgba(216, 191, 137, 0.719);
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	overflow: hidden;
+	/*padding:10px;*/
+
+}
+
+.resultados-busqueda .usuarios div{
+		float: left;
+		
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+}
+
+
+
+.resultados-busqueda .img img{
+	margin-top: 10px;
+	width: 60px;
+	height:65px;
+	margin-left: 20px;
+	
+}
+.resultados-busqueda .img img:hover{
+	width: 190px;
+	height: 195px;
+	margin-left: 20px;
+	
+}
+
+.resultados-busqueda .nombre{
+	margin: 33px 20px;
+	width: 60%;	
+	text-align: left;
+}
+
+.resultados-busqueda .nombre a{
+	font-size: 2em;
+}
+.resultados-busqueda .nombre a:hover{
+	font-size: 4em;
+}
+
+
+/************************************************************************
+****************BUSCAR:  POR TITULO****************************
+************************************************************************/
+
+.busqueda-titulo #buscar_completo{
+	background: rgba(216, 191, 137, 0.719);
+	width: 50%;
+	font-size:1em;
+	margin-left: 10px;
+	margin-top:50px;
+	margin-bottom: 100px;
+
+	
+	
+}
+
+#buscar_completo input{
+	display: inline-block;
+	padding-left:5px;
+	font-size:1em;
+	
+	width: 90%;
+	height: 20px;
+	background-color: rgba(170, 138, 98, 0.4)
+}
+#buscar_completo input:focus{
+
+	font-size: 4em;
+    width: 90%;
+	height: 2em;
+	background-color: rgba(209, 186, 159, 0.44);
+    position: relative;
+    z-index: 1;
+    box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+    /*float:left;*/
+	text-align: left;
+
+    
+	
+}
+
+
+/**************************************************************************
+***************************** PAGINA DE MENSAJES  *************************
+**************************************************************************/
+
+#container{
+	background: blue;
+	margin: 10px auto;
+}
+
+
+/**************************************************
+************	MENSAJES DE USUARIOS 	**********
+**************************************************/
+
+.contenedor-usuarios-mensajes{
+	border-top: 30px solid #2c3e50;
+	background: rgba(216, 191, 137, 0.719);
+	float: left;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	width: 365px;
+	margin: 0px 0px 5px 50px;
+	height: 540px;
+	-webkit-box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+-moz-box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+}
+
+.contenedor-usuarios-mensajes ul{
+	border-bottom: 1px solid #ccc;
+	background: rgba(216, 191, 137, 0.719);
+	overflow: hidden;
+	height: 90px;
+}
+
+.contenedor-usuarios-mensajes ul:hover{
+	background: #F2F2F2;
+	cursor: pointer;
+}
+
+.contenedor-usuarios-mensajes ul li{
+	list-style: none;
+}
+
+
+.contenedor-usuarios-mensajes ul .mensaje-img{
+	float: left;
+	width: 30.5%;
+	height: 75px;
+	margin: 5px 8px 5px 10px;
+	overflow: hidden;
+}
+
+.contenedor-usuarios-mensajes ul .mensaje-img img{
+	width: 100px;
+}
+
+
+
+.contenedor-usuarios-mensajes  ul li .nombre{
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 25px;
+	margin-bottom: 2px;
+	color:white;
+}
+
+
+.contenedor-usuarios-mensajes ul .mensajes{
+	color:white;
+	font-size: 13px;
+
+}
+
+
+/**************************************************
+************	MENSAJES	***********************
+**************************************************/
+
+
+#contenedor-mensajes{
+	float: left;
+	width: 55%;
+	margin-left: 20px;
+	-webkit-box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+-moz-box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
+}
+
+.contenedor-usuarios-mensajes a{
+	text-decoration: none;
+}
+
+#contenedor-mensajes div#contenedor-nombre{
+	background: #2c3e50;
+	display: block;
+	border-bottom: 1px solid #ccc;
+	height: 89px;
+	overflow: hidden;
+}
+
+#contenedor-mensajes div#contenedor-nombre img{
+	width: 10%;
+	margin: 15px 5px 5px 10px;
+	float: left;
+}
+
+#contenedor-mensajes div#contenedor-nombre h2{
+	margin: 25px 5px 5px 10px;
+	float: left;
+	color:white;
+}
+
+
+#contenedor-mensajes div#contenedor-chat{
+	/*background: url("../img/fondo.jpg");*/
+	background: rgba(216, 191, 137, 0.719);
+	height: 400px;
+	border-bottom: 1px solid #ccc;
+}
+
+#contenedor-mensajes #contenedor-form-mensaje{
+	background: #2c3e50;
+	width: 100%;
+	height: 51px;
+}
+
+
+#contenedor-mensajes #contenedor-form-mensaje form{
+	
+	width: 90%;
+	margin: auto;
+}
+
+#contenedor-mensajes #contenedor-form-mensaje form input{
+	margin-top: 7px;
+	width: 100%;
+	height: 33px;
+	border-style: none;
+	border-radius: 3px;
+	font-size: 14px;
+	padding: 10px;
+}
+
+#contenedor-mensajes #contenedor-form-mensaje form input:focus{
+	outline: none;
+}

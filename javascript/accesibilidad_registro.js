@@ -13,8 +13,10 @@ function ejecutarArtyom() {
         speed: 1.0 // Velocidad normal con  1
         
         });
+        let mensaje=document.getElementById('mensaje_registro').value;
         
-        artyom.say("Te encuentras en el registro, comando ayuda disponible");
+        artyom.say(mensaje+"Te encuentras en el registro, se tiene 2 campos de entrada, el usuario y password, comando ayuda disponible")
+
 
 
 };
@@ -22,7 +24,7 @@ function ejecutarArtyom() {
 
 function ejecutar_ayuda_registro() {
 
-    artyom.say( "Te encuentras en el formulario de registro, se tiene 6 campos de entrada, el primero es el tipo de discapacidad visual, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), los siguientes son nombre, usuario, password, país, profesión, los cuales al nombrarlos seguido del valor de entrada puedes registrarte, al final pronuncias, registrar, o pronunciar ir a login para regrezar, pronunciar ayuda avanzada para escritura asistida");
+    artyom.say("Te encuentras en el formulario de registro, se tiene 6 campos de entrada, el primero es el tipo de discapacidad visual, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), los siguientes son nombre, usuario, password, país, profesión, los cuales al nombrarlos seguido del valor de entrada puedes registrarte, al final pronuncias, registrar, o pronunciar ir a login para regrezar, pronunciar ayuda avanzada para escritura asistida");
           
 }
 function ejecutar_ayuda_avanzada(){
@@ -101,24 +103,10 @@ function pegarElementos(tipo_input, tipoElemento){
 
 function reanudarAnnyang() {
 
-    annyang.start(); /* Una vez terminado de reproducir mensaje, se renueva la sintesis de comandos de voz*/
+    annyang.start(); /* Una vez terminado de reproducir mensaje, se renueva la síntesis de comandos de voz*/
 }
 
-function pausar() {
 
-    responsiveVoice.pause();
-    annyang.start();
-}
-
-function continuar() {
-    responsiveVoice.resume();
-
-}
-
-function cancelar() {
-    responsiveVoice.cancel();
-
-}
 
 if (annyang) {
 annyang.setLanguage('es-ES');

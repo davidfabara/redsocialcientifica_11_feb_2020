@@ -15,6 +15,9 @@ function ejecutarArtyom() {
         });
         
         artyom.say("Estas en la sección de edición del perfil, comando ayuda disponible");
+        document.getElementById('edit-submit').onclick=function(){artyom.say("Tu formulario de registro se ha editado")};
+
+        document.getElementById('return-perfil').onclick=function(){artyom.say("Estás regresando a tu perfil")};
 
 
 };
@@ -22,7 +25,7 @@ function ejecutarArtyom() {
 
 function ejecutar_ayuda_editar_perfil() {
 
-    artyom.say( "Estas en la sección de edición del perfil, se tiene 5 campos de entrada, el primero es el nombre, el segundo es el usuario, el tercero es la profesión, el cuarto es el país, para agregar información solo con nombrarlos, seguido del valor, el quinto campo es el tipo de discapaciadad visual, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), al final pronuncia editar, para actualizar la información nueva, si deseas volver al perfil, prununcia ese comando, si deseas crear texto de forma avanzada, pronuncia, ayuda avanzada");
+    artyom.say( "Te encuentras en la sección de edición del perfil, se tiene 5 campos de entrada, el primero es el nombre, el segundo es el usuario, el tercero es la profesión, el cuarto es el país, para agregar información solo con nombrarlos, seguido del valor, el quinto campo es el tipo de discapaciadad visual, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), al final pronuncia editar, para actualizar la información nueva, si deseas volver al perfil, prununcia ese comando, si deseas crear texto de forma avanzada, pronuncia, ayuda para crear texto");
           
 }
 
@@ -319,12 +322,14 @@ annyang.setLanguage('es-ES');
         },
                
         'editar': () => {
+            artyom.say('Usted ha editado su formulario de registro');
             document.getElementById('edit-submit').click();
 
 
         },
        
         'volver al perfil': () => {
+            artyom.say('Usted está volviendo a su perfil');
             document.getElementById('return-perfil').click();
 
 

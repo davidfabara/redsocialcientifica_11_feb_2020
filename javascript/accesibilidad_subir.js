@@ -17,15 +17,25 @@ function ejecutarArtyom() {
         speed: 1.0 // Velocidad normal con  1
         
         });
+        /*
+                document.getElementById('subir-submit').onclick=function(){artyom.say("Tu publicación se ha enviado con éxito, visita tu perfil para visualizarla y recuerda hacer click en mostrar todo para ver su contenido")};
+
+        */
+
         
-        artyom.say("Te encuentras en la sección principal, comando ayuda disponible");
+        let mensaje=document.getElementById('mensaje_pagina_principal').value;
+        artyom.say(mensaje+". Te encuentras en la sección principal, en la sección de cabecera se encuentra el acceso a la página principal, una sección de búsqueda, solicitudes, notificaciones, acceso al perfil, en el cuerpo del documento se encuentra el formulario para enviar una publicación, en la parte inferior una lista de tus publicaciones. Para control por voz pronuncia 'ayuda'. ");
+        /*
+               document.getElementById('mensaje_sesion_destroy').innerHTML='<?php echo \'mensaje_destruido\';$_SESSION[\'mensaje\']=\'\'; ?>'; 
+        */
+ 
 
 
 };
 
 function ejecutar_ayuda() {
 
-    artyom.say( "Te encuentras en la página principal, estructura con una cabecera con accesos director en la parte superior, en la inferior un cuerpo del documento con la sección para subir una publicación seguido de la lista de publicaciones. Con comandos de voz pronuncia opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o solicitudes, opción 5 o noticias, opción 6 o perfil, opción 7 o cerrar , opción 8 o para ocultar o mostrar el formulario para subir publicación, opción 9 para reproducir las publicaciones existentes, disponible también comando ayuda para subir y comando ayuda para texto, adicional ayuda para sistemas híbridos");          
+    artyom.say( "Te encuentras en la página principal, estructura con una cabecera con accesos directos en la parte superior, en la inferior un cuerpo del documento con la sección para subir una publicación seguido de la lista de publicaciones. Con comandos de voz pronuncia opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o solicitudes, opción 5 o noticias, opción 6 o perfil, opción 7 o cerrar , opción 8 o para ocultar o mostrar el formulario para subir publicación, opción 9 para reproducir las publicaciones existentes, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda. Disponible también comando ayuda para subir y comando ayuda para texto, adicional ayuda para sistemas híbridos, para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
 
 }
 
@@ -35,7 +45,12 @@ function ejecutar_ayuda_subir(){
 }
 function ejecutar_ayuda_texto(){
 
-    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto, para el caso de pegar un texto en algún input, pronunciar pegar  texto elemento número seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer input de resumen, sería, pegar texto en elemento 1 de resumen, nota: también se puede aplicar este proceso para los comentarios. Nota 2: La creación de texto se hace de forma iterativa, ejm comando, crear texto para acumular varias palabras e ir pegándolo con el deletreo y de esta forma crear frases complejas, para borrar ya sea para texto, deletrear, se pronuncia borrar seguido de alguno de ellos");
+    artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto, para el caso de pegar un texto en algún input, pronunciar pegar  texto elemento número seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer input de resumen, sería, pegar texto en elemento 1 de resumen, nota: también se puede aplicar este proceso para los comentarios. Nota 2: La creación de texto se hace de forma iterativa, ejm comando, crear texto para acumular varias palabras e ir pegándolo con el deletreo y de esta forma crear frases complejas, para borrar ya sea para texto, deletrear, se pronuncia borrar seguido de alguno de ellos, para más ejemplos, pronuncia, ayuda de ejemplos");
+}
+
+function ejecutar_ayuda_ejemplos(){
+    artyom.say("Los comandos de voz implican pronunciar palabras lentamente y de forma correcta, como ejemplos. 1. Para crear un texto de prueba, invocamos al comando de voz pronunciando crear texto, en este caso el texto herramientas de accesibilidad, notar que se puede seguir invocando el texto , podemos corregirlo pronunciando corregir texto, esta instrucción nos dará pautas para corregir ese texto. 2. Para deletrear, pronunciar deletrear seguido de la letra a invocar, ejemplo para construir la palabra Fabara lo hacemos con deletrear F mayúscula,  luego deletrear a, luego deletrear b grande, luego deletrear a, luego deletrear ere, luego deletrear a. 3. Para agregar texto en un elemento concreto de forma compleja , por ejemplo al crear una cita para resumen tendremos varios campos nuevos el texto a ingrezar en el 2do elemento de la sección del resumen el texto, texto escrito, pronunciamos elemento 2 de resumen con texto escrito");
+
 }
 function ejecutar_ayuda_sistema_hibrido(){
     artyom.say("Para utilizar el teclado braille para suministrar texto y para enfocar elementos con la voz, pronuncia ejemplo, enfocar elemento 1 de resumen, esto posicionará el cursor en el primer elemento de la categoría de resumen, esto aplica para cualquier input concreto");
@@ -87,6 +102,10 @@ if (annyang) {
         },
         'ayuda para texto': () => {
             ejecutar_ayuda_texto();
+          
+        },
+        'ayuda de ejemplos': () => {
+            ejecutar_ayuda_ejemplos();
           
         },
         'ayuda para sistemas híbridos': () => {
@@ -199,6 +218,7 @@ if (annyang) {
         },
         'cerrar': () => {
             console.log("Cerrar ejecutado");
+            artyom.say("Usted ha cerrado la sesión, desplegando a página inicial de login");
 
             document.getElementById('navegacion_cerrar').click();
             //document.getElementById('info-solicitud').click();
@@ -626,6 +646,14 @@ if (annyang) {
 
 
         },
+        'poner okay en publicación *num': (num) => {
+
+            invocar_input_formulario('elementoOk', num, '');
+        },
+        'poner denunciar en publicación *num': (num) => {
+
+            invocar_input_formulario('elementoDenuncia', num, '');
+        },
         'reproducir publicación *value': (value) => {
             var value=value.replace('uno','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
             if(value==='diez'||value==='10'){
@@ -662,12 +690,17 @@ if (annyang) {
         }
 
         var num=parseInt(num)-1;
-        if (num===0&&tipoInput!="comentario"){
-            num=""; espacio="";
-        }
-        if(tipoInput==="comentario"){
+    
+        if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
             espacio="";
+        }else{
+            if (num===0&&tipoInput!="comentario"){
+                num=""; espacio="";
+            }
         }
+
+        
+
                 
 
            /* Comprobando la existencia del identificador invocado con la voz, para proceder a agregar el valor del input suministrado por invocación asociada con comando de voz 
@@ -676,15 +709,25 @@ if (annyang) {
             */
 
         if(document.body.contains( document.getElementById(tipoInput+ espacio+ num))){
+            if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
+                document.getElementById(tipoInput+ num).click();
+                if(tipoInput==="elementoOk")
+                    artyom.say("Has puesto ok en la publicación "+(num+1));
+                if(tipoInput==="elementoDenuncia")
+                    artyom.say("Has puesto una denuncia en la publicación "+(num+1));
+            }else{
                 document.getElementById(tipoInput+ espacio+ num).value=val.charAt(0).toUpperCase() + val.slice(1);
-                artyom.say("Estas escribiendo en"+ tipoInput+" elemento "+(num+1)+", "+val);
+                artyom.say("Estas escribiendo en"+ tipoInput+" elemento "+(num+1)+", con:  "+val);
                 document.getElementById(tipoInput+ espacio+ num).focus();
+            }
+
         }else{
                 artyom.say("El imput no existe, volver a intentar");
-                console.log("El número de elemento es "+num+". El input  de texto es: "+val);
+                console.log("El tipo input es: ("+tipoInput+") . El número de elemento es "+num+". El input  de texto es: "+val);
 
         }
-           /* Recordar que cada estructura, tanto resumen, contenido, conclusiones, recomendaciones tienen un identificador no indexado por ello si num===0 simplemente queda vacio como si sucede con sus hijos en jerarquia del array tridimensional pero basado en el ID mas no en el nombre ejm resumen 1, el cual seria el primer elemento como hijo de resumen*/
+
+           /* Recordar que cada estructura, tanto resumen, contenido, conclusiones, recomendaciones tienen un identificador no indexado por ello si num===0 simplemente queda vacio como si sucede con sus hijos en jerarquia del array tridimensional pero basado en el ID más no en el nombre ejm resumen 1, el cual sería el primer elemento como hijo de resumen*/
 
     }
     // Añadimos los comandos

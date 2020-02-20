@@ -17,7 +17,9 @@ function ejecutarArtyom() {
         
         });
         
-        artyom.say("Te encuentras en el login, comando ayuda disponible")
+        let mensaje=document.getElementById('mensaje_login').value;
+        
+        artyom.say(mensaje+"Te encuentras en el login, se tiene 2 campos de entrada, el usuario y password y el botón acceder, comando ayuda disponible");
 
 
 };
@@ -27,7 +29,7 @@ function localizacion_login(){
 
 function ejecutar_ayuda_login() {
 
-    artyom.say( "Estas en el formulario de login, se tiene 2 campos de entrada, puedes acceder a ellos pronunciándolos, el primero es usuario, el segundo es el password, el tercero es acceder si eres nuevo, di:  ir a registro, para ayuda avanzada, pronuncia este comando, para saber lo que escribiste, pronuncia, leer texto o deletreo según sea el caso");          
+    artyom.say( "Estas en el formulario de login, se tiene 2 campos de entrada usuario y password, puedes acceder a ellos pronunciándolos, el primero es usuario, el segundo es el password, el tercero es acceder si eres nuevo, di:  ir a registro, para ayuda avanzada, pronuncia este comando, para saber lo que escribiste, pronuncia, leer texto o deletreo según sea el caso");          
 
 }
 function ayuda_avanzada(){

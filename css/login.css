@@ -206,3 +206,30 @@ body{
 	
     
 }
+/*********************Enlaces******************/
+/*https://desarrolloweb.com/articulos/1941.php*/
+.enlace-boton {    
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 4px;
+	background-color: #ffffcc;
+	color: #666666;
+	text-decoration: none;
+	box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+ }
+ .enlace-boton:link,
+ .enlace-boton:visited {
+	border-top: 1px solid #cccccc;
+	border-bottom: 2px solid #666666;
+	border-left: 1px solid #cccccc;
+	border-right: 2px solid #666666;
+	box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+ }
+ .enlace-boton:hover {
+	border-bottom: 1px solid #cccccc;
+	border-top: 2px solid #666666;
+	border-right: 1px solid #cccccc;
+	border-left: 2px solid #666666;
+	box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
+ }

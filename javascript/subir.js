@@ -42,8 +42,8 @@ function mostrar_subir() {
 
 
 function descripcionArchivos() {
-    descripcion += "<input type=" + '"text"' + ' name="alt" placeholder =' + "Descripcion de archivo><br>";
-    /*Si se hace click de manera iterativa, se puede invocar a varios eventos y como cadena es un acumulador, simplemente absorvera lo que tiene y aumentara lo asignado */
+    descripcion += "<input type=" + '"text"' + ' name="alt" placeholder =' + "Descripción de archivo><br>";
+    /*Si se hace click de manera iterativa, se puede invocar a varios eventos y como cadena es un acumulador, simplemente absorverá lo que tiene y aumentará lo asignado */
     document.getElementById("addDescripcionArchivos").innerHTML = descripcion;
     /* La cadena se convierte a codigo html y se inyecta hacia el id de addDescripcionArchivos*/
 }

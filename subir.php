@@ -7,6 +7,7 @@
 <div class="subir" style="display:block;">
     <div class="publi-info-perfil">
         <label for="subir-sms-oculto" onclick="ejecutar_ayuda_subir()"><strong>Ayuda para subir:📢</strong></label>
+        <input type="hidden" id="mensaje_pagina_principal" value="<?php echo tiempo_sesion_mensaje(); ?>">
         <h1 class="speech-post" style="display:none;" id="subir-sms-oculto"></h1>
         <table>
             <tr>
@@ -17,9 +18,9 @@
                 </td>
                 <?php 
                 /* 	
-                    <!--Le he agregado un acceso al perfil del usuario pero solo en la seccion de subir contenidos en el icono de perfil del mismo usuario de la actual sesion, y tambien una descripcion de la foto de perfil para accesibilidad , en la siguiente parte tambien se establece un vinculo al perfil del usuario para el nombre-->
+                    <!--Se he agregado un acceso al perfil del usuario pero solo en la sección de subir contenidos, en el ícono de perfil del mismo usuario de la actual sesión, y tambien una descripción de la foto de perfil para accesibilidad , en la siguiente parte también se establece un vínculo al perfil del usuario para el nombre-->
                     
-                    <!--Cuando vamos a subir contenido, se cargara en la parte superior la foto de perfil y el nombre del usuario , luego en el FORM action, se receptara input type text y el archivo a subir-->
+                    <!--Cuando vamos a subir contenido, se cargará en la parte superior la foto de perfil y el nombre del usuario , luego en el form action, se receptará input type text y el archivo a subir-->
                 */
                 ?>
             </tr>
@@ -73,7 +74,7 @@
                         </td>
                         <td>
                             <div>
-                                <?php  /* TODO: Verificar quitar los indices de array bidimensional para el textarea principal de cada <td> */?>
+                                <?php  /* TODO: Verificar quitar los índices de array bidimensional para el textarea principal de cada <td> */?>
                                 <textarea name="subir_cont[resumen][0][0][parrafo]" id="resumen" class="contenidos" rows="4" cols="40" placeholder="Escribir el resumen"></textarea><br>
 
                                 <div class="div_resumen"></div>
@@ -160,7 +161,7 @@
             <table width="90%" border="1">
                 <tbody>
                     <tr>
-                        <td><input id="descripcionArchivos" type="button" value="Descripcion Archivos"></td>
+                        <td><input id="descripcionArchivos" type="button" value="Descripción de Archivos"></td>
                         <td>
                             <div id="addDescripcionArchivos"></div>
                         </td>

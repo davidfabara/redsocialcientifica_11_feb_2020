@@ -171,11 +171,11 @@ header nav .no-leido{
  
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 1; /* a-index determinara la importancia de este recuadro que en este caso se superpondra a la interfaz principal u otro elemento que tenga un z-index inferior*/
+    z-index: 1; /* a-index determinará la importancia de este recuadro que en este caso se superpondrá a la interfaz principal u otro elemento que tenga un z-index inferior*/
 }
 
 header nav #info-solicitud:hover #nav-solicitud{
-	visibility: visible; /*Al pasar el mouse por el icono de las solicitudes de amistad, con la propiedad hover hacemos que se visualicen lo que en #info-solicitud #nav-solicitud permanecian escondidas*/
+	visibility: visible; /*Al pasar el mouse por el ícono de las solicitudes de amistad, con la propiedad hover hacemos que se visualicen lo que en #info-solicitud #nav-solicitud permanecian escondidas*/
 }
 
 #nav-solicitud li{
@@ -195,7 +195,7 @@ header nav #info-solicitud:hover #nav-solicitud{
 #nav-solicitud::after {
     content: " ";
     position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
+    bottom: 100%;  
     left: 7%;
     margin-left: -5px;
     border-width: 10px;
@@ -229,7 +229,6 @@ header nav #info-solicitud:hover #nav-solicitud{
     padding: 5px 0;
     border-radius: 6px;
  
-    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
 }
@@ -290,7 +289,6 @@ header nav #info-notificaciones:hover #nav-notificaciones{
     padding: 5px 0;
     border-radius: 6px;
  
-    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
 }
@@ -435,7 +433,7 @@ float: right;
 
 .publicacion{
 	text-align: justify;
-	max-width: 60%;
+	max-width: 70%;
 	margin: auto;
     font-size: 30px;
 	background: rgba(216, 191, 137, 0.719);
@@ -448,8 +446,8 @@ float: right;
     
 }
 .publicacion:hover{
-	max-width: 60%;
-    font-size:60px;
+
+
 	margin: auto;
 	background: rgba(216, 191, 137, 0.719);
 	margin-top: 15px;
@@ -514,11 +512,11 @@ publi-info-perfil .publi-img-perfil :hover{
 	text-decoration: none;
 	color: #2c3e50;
 	font-size: 50px;
-    /*Para aumentar el nombre del usuario en una publicacion*/
+    /*Para aumentar el nombre del usuario en una publicación*/
 }
 
 .publi-thumb {
-	 /*El zoom de las imagenes si es 100% se mostrara el 100% de la imagen*/
+	 /*El zoom de las imágenes si es 100% se mostrará el 100% de la imagen*/
 	width: 50%;
 	margin: auto;
 	margin-bottom: 30px;
@@ -530,7 +528,7 @@ publi-info-perfil .publi-img-perfil :hover{
 	transition: all .3s ease; */
 }
 .publi-thumb:hover {
-	/*El zoom de las imagenes si es 100% se mostrara el 100% de la imagen*/
+	/*El zoom de las imágenes si es 100% se mostrará el 100% de la imagen*/
 	width: 90%;
 	margin: auto;
     box-shadow: 30px 35px 40px rgba(0, 0, 0, 0.44);
@@ -612,9 +610,7 @@ publi-info-perfil .publi-img-perfil :hover{
 
 
 }
-.comentario-nombre:hover{
-    font-size: 1.5em;
-}
+
 
 
 .comentario-nombre .comentarios{
@@ -634,12 +630,10 @@ publi-info-perfil .publi-img-perfil :hover{
 }
 .publicacion .comentario input:focus{
 	*outline: none;
-    font-size: 1em;
+	font-size: 2em;
+	max-width: 100%;
 }
-.publicacion .comentario:hover{
-	*outline: none;
-    font-size: 2em;
-}
+
 
 
 
@@ -683,12 +677,12 @@ publi-info-perfil .publi-img-perfil :hover{
 .subir .contenidos:focus{
 	outline: none;
     font-size: 6em;
-    /*Al mantener presionado se puede aumentar el tamano del espacio para ingrezar texto*/
+    /*Al mantener presionado se puede aumentar el tamaño del espacio para ingresar texto*/
 }
 .subir #alt:focus{
 	outline: none;
     font-size: 17px
-    /*Al mantener presionado se puede aumentar el tamano del espacio para ingrezar texto*/
+    /*Al mantener presionado se puede aumentar el tamaño del espacio para ingrezar texto*/
 }
 
 
@@ -712,7 +706,7 @@ publi-info-perfil .publi-img-perfil :hover{
 	 padding: 5px 10px;
 	 border-radius: 5px;
 	 cursor: pointer; 
-	 font-size: 3em;
+	 font-size: 1em;
 	 display:block;
 	 margin-left: auto;
   	 margin-right: auto;  
@@ -839,7 +833,7 @@ publi-info-perfil .publi-img-perfil :hover{
 
 
 /**************************************************************************
-***************************** PAGINA DE MENSAJES  *************************
+***************************** PÁGINA DE MENSAJES  *************************
 **************************************************************************/
 
 #container{
@@ -985,3 +979,4 @@ box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
 #contenedor-mensajes #contenedor-form-mensaje form input:focus{
 	outline: none;
 }
+

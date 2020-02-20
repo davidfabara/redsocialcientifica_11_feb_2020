@@ -1,5 +1,5 @@
 <?php
- ob_start();/* Un errror importante en las cebeceras header, solucionado  con esta instrucción y su similar al final, he usado convet to UTF-8*/
+ ob_start();/* Un error importante en las cebeceras header, solucionado  con esta instrucción y su similar al final, he usado convet to UTF-8*/
 ?>
 <?php 
 session_start(); /* Iniciamos la sessión sobre perfil.php*/
@@ -8,15 +8,15 @@ require('clases/clases.php'); /* Ruta relativa hacia clases.php en carpeta clase
 verificar_session();
 require('header.php');
 
-
+tiempo_sesion_mensaje();
 if (isset($_GET['CodUsua'])) {
 	/*
-	 El método get se recibe al intentar acceder al perfil de un usuario(ya sea desde una publicacion en el nombre de un usuario como vinculo o buscandolo en la seccion), por lo tanto cada usuario tiene un CodUsua univoco  
+	 El método get se recibe al intentar acceder al perfil de un usuario(ya sea desde una publicación en el nombre de un usuario como vínculo o buscándolo en la sección), por lo tanto cada usuario tiene un CodUsua unívoco.  
 	*/
 	$usuario = usuarios::usuario_por_codigo($_GET['CodUsua']);
 
 	/*
-		En usuarios::usuario_por_codigor , se procesa la instruccion SQL select * from usuarios where CodUsua = :CodUsua"); con el objetivo de retornar TODOS LOS ATRIBUTOS DE UN USUARIO , esta informacion se visualizara en el codigo html 
+		En usuarios::usuario_por_codigo , se procesa la instruccion SQL select * from usuarios where CodUsua = :CodUsua"); con el objetivo de retornar todos los atributos de un usuario , esta información se visualizará en el código html 
 		hay una diferencia entre usuarios::verificar con SQL "select * from usuarios where usuario = :usuario", con usuarios::usuario_por_codigo, sql de "select * from usuarios where CodUsua = :CodUsua" en el 1era seleccionamos todos los registros por el $usuario, en cambio en usuarios::usuario_por_codigo se lo hace por CodUsua	.
 	*/
 
@@ -27,28 +27,28 @@ if (isset($_GET['CodUsua'])) {
 
 	$verificar_amigos = amigos::verificar($_SESSION['CodUsua'], $_GET['CodUsua']);
 	/*
-	 amigos::verificar llama, enviando los argumentos y recibiendo los parametros en :
-	 function verificar($usua_enviador, $usua_receptor), en esta funcion se ejecuta la instruccion SQL   "select * from amigos where (usua_enviador = :usua_enviador and usua_receptor = :usua_receptor) or (usua_enviador = :usua_receptor and usua_receptor = :usua_enviador) ");
-	  con el objetivo de verificar si un usuario tanto si $_SESSION['CodUsua']como $_GET['CodUsua'] se han enviado solicitudes de amistad y ya son amigos registrados en la base de datos, el objetivo de esta funcion entonces sera mostrar si son amigos o "agregar", segun el ['status'] == true , en este caso implica que el usuario de perfil y el uusario de la SESSION son amigos, pero tambien hay la posibilidad de que la "solicitud enviada" o "editar perfil", todo esto depende de lo que nos retorne en amigos::verificar porque se controla las poisibilidades de ejecucion entorno al codigo html con el de php envedido en la seccion de html. 
+	 amigos::verificar llama, enviando los argumentos y recibiendo los parámetros en :
+	 function verificar($usua_enviador, $usua_receptor), en esta función se ejecuta la instruccion SQL   "select * from amigos where (usua_enviador = :usua_enviador and usua_receptor = :usua_receptor) or (usua_enviador = :usua_receptor and usua_receptor = :usua_enviador) ");
+	  con el objetivo de verificar si un usuario tanto si $_SESSION['CodUsua']como $_GET['CodUsua'] se han enviado solicitudes de amistad y ya son amigos registrados en la base de datos, el objetivo de esta función entonces será mostrar si son amigos o "agregar", según el ['status'] == true , en este caso implica que el usuario de perfil y el uusario de la SESSION son amigos, pero tambien hay la posibilidad de que la "solicitud enviada" o "editar perfil", todo esto depende de lo que nos retorne en amigos::verificar porque se controla las poisibilidades de ejecución entorno al codigo html con el de php envedido en la seccion de html. 
 
 
-	 $_SESSION['CodUsua'] siempre tendra el codigo del usuario que esta navegando en el computador mas $_GET['CodUsua'] es una variable que se recibira cada vez que se llame a perfil.php para procesados por usuario individual con respecto a $_SESSION['CodUsua']
-	 Esta funcion tambien controla si se trata del uusario de SESSION o de un ususario como vinculo de alguna publicacion.
+	 $_SESSION['CodUsua'] siempre tendrá el código del usuario que esta navegando en el computador más $_GET['CodUsua'] es una variable que se recibirá cada vez que se llame a perfil.php para procesados por usuario individual con respecto a $_SESSION['CodUsua'].
+	 Esta función también controla si se trata del usuario de SESSION o de un usuario como vínculo de alguna publicación.
 	 */
 	$post = post::post_por_usuario($_GET['CodUsua']);	
 	/*
-	 En esta funcion de la clase post con la instruccion SQL "select U.CodUsua, U.nombre, U.foto_perfil, P.CodPost, P.contenido, P.img, P.url from usuarios U inner join post P on U.CodUsua = P.CodUsua where P.CodUsua = :CodUsua ORDER BY P.CodPost DESC");   obtenemos todos los valores relativos a una publicacion respectivamente del usuario del perfil
+	 En esta función de la clase post con la instruccion SQL "select U.CodUsua, U.nombre, U.foto_perfil, P.CodPost, P.contenido, P.img, P.url from usuarios U inner join post P on U.CodUsua = P.CodUsua where P.CodUsua = :CodUsua ORDER BY P.CodPost DESC");   obtenemos todos los valores relativos a una publicación respectivamente del usuario del perfil.
 
-	 TODO: IMPORTANTE TODO:, ahora tanto en perfil.php como en pubicacion.php, un usuario que visite estas 2 secciones tendra la posibilidad de poner un me gusta, un comentario o visualizar la informacion, y a su vez notificaciones sobre esas acciones,  para controlar esas posibilidades es los siguientes condicionales isset($_GET['agregar'])) , isset($_POST['comentario']) , (isset($_GET['mg'])) , ´para cualquiera de estas acciones recargamos con header('location: index.php');  A EXCEPCION de la accion de "AGREGAR" a una persona para una solicitud de amistad, en ese caso, se debe redireccionar a header('location: perfil.php?CodUsua='.$_GET['CodUsua']); con la intencion de ver el mensaje de "solicitud enviada" y constatar que se ha efectuado la solicitud de amistad sobre el perfil del uusario(DIFERENTE al de session) actualmente visitado.
+	 TODO: Importante:, ahora tanto en perfil.php como en pubicacion.php, un usuario que visite estas 2 secciones tendrá la posibilidad de poner un me gusta, un comentario o visualizar la información, y a su vez notificaciones sobre esas acciones,  para controlar esas posibilidades es los siguientes condicionales isset($_GET['agregar'])) , isset($_POST['comentario']) , (isset($_GET['mg'])) , ´para cualquiera de estas acciones recargamos con header('location: index.php'). A excepción de la acción de "AGREGAR" a una persona para una solicitud de amistad, en ese caso, se debe redireccionar a header('location: perfil.php?CodUsua='.$_GET['CodUsua']); con la intención de ver el mensaje de "solicitud enviada" y constatar que se ha efectuado la solicitud de amistad sobre el perfil del ususario(diferente al de sessión) actualmente visitado.
 	 */
 }
 
 if (isset($_GET['agregar'])) {
 	/*
-desde el mismo perfil.php en el codigo embedido entre html y php de la seccion inferior, con <a href="perfil.php?CodUsua=<?php echo $_GET['CodUsua']; ?>&&agregar=
-<?php echo $_GET['CodUsua']; ?>">Agregar</a> es en donde se envia al mismo perfil.php la variable $_GET['agregar'], un
-ususario de SESSION que visite el perfil de un X usuario, tiene la posibilidad de enviar esta solicitud de amistad
-*/
+		desde el mismo perfil.php en el código embedido entre html y php de la sección inferior, con <a href="perfil.php?CodUsua=<?php echo $_GET['CodUsua']; ?>&&agregar=
+		<?php echo $_GET['CodUsua']; ?>">Agregar</a> es en dónde se envía al mismo perfil.php la variable $_GET['agregar'], un
+		usuario de SESSION que visite el perfil de un X usuario, tiene la posibilidad de enviar esta solicitud de amistad
+	*/
 	amigos::agregar($_SESSION['CodUsua'], $_GET['CodUsua']);
 	header('location: perfil.php?CodUsua=' . $_GET['CodUsua']);
 
@@ -57,8 +57,10 @@ ususario de SESSION que visite el perfil de un X usuario, tiene la posibilidad d
 
 
 if (isset($_POST['comentario'])) {
-/*Primero se controla que el comentario no este vacio para luego ya sea las notificaciones o los me gusta para
-agregrarlos a la base de datos y luego notificarlos en la seccion de cabecera(superior) */
+/*
+	Primero se controla que el comentario no este vacío para luego ya sea las notificaciones o los me gusta para
+	agregrarlos a la base de datos y luego notificarlos en la sección de cabecera(superior) 
+*/
 	if (!empty($_POST['comentario'])) {
 		comentarios::agregar($_POST['comentario'], $_SESSION['CodUsua'], $_POST['CodPost']);
 		notificaciones::agregar(1, $_POST['CodPost'], $_SESSION['CodUsua']);
@@ -72,9 +74,9 @@ agregrarlos a la base de datos y luego notificarlos en la seccion de cabecera(su
 if (isset($_GET['mg'])) {
 	/*
 	El valor recibido por mg con 0 implica que un usuario no ha seleccionado el OK(me gusta), y el 2 implica que es ya se
-	ha seleccionado Ok, y es evidente que no se debe registrar mas de 1 OK por publicacion
-	El valor de accion puede ser 1 o 0 , 1 para comentarios y 0 para me gusta, un dato que 0=false, de esta forma se
-	procesa la accion de 0 en la base de datos
+	ha seleccionado Ok, y es evidente que no se debe registrar más de 1 OK por publicación.
+	El valor de acción puede ser 1 o 0 , 1 para comentarios y 0 para me gusta, un dato que 0=false, de esta forma se
+	procesa la acción de 0 en la base de datos.
 	*/
 	if ($_GET['mg'] == 0) {
 		mg::agregar($_GET['CodPost'], $_SESSION['CodUsua']);
@@ -83,15 +85,15 @@ if (isset($_GET['mg'])) {
 
 	}
 	if ($_GET['mg'] == 2) {
-		/* No se agrega en la base de datos ni se establece una notificacion pues esto implica que ya se ha puesto 'OK' */
+		/* No se agrega en la base de datos ni se establece una notificación pues esto implica que ya se ha puesto 'OK' */
 	}
 	header('location: index.php');
 
 	/*
-	OJO, aqui hay un bug, a diferencia de su homologo en index.php que cumple las mismas caracteriscticas, aqui en
-	perfil.php pero hay un error que en perfil.php de no ubicar el header('location: index.php'); despues del todo, nos
-	produce el error, a diferencia en index.php en el cual al hacer click en una publicacion que ya hemos puesto me gusta
-	es evidente que no deberia ser necesario recargar la pagina como si se soluciona en index.php
+	OJO, aqui hay un bug, a diferencia de su homólogo en index.php que cumple las mismas caracteriscticas, aquí en
+	perfil.php hay un error de no ubicar el header('location: index.php'); despues del todo, nos
+	produce el error, a diferencia en index.php en el cual al hacer click en una publicación que ya hemos puesto me gusta
+	es evidente que no deberia ser necesario recargar la página como si se soluciona en index.php
 	*/
 }
 if (isset($_GET['denuncia'])) {
@@ -100,7 +102,7 @@ if (isset($_GET['denuncia'])) {
 		header('location: index.php');
 	}
 	if ($_GET['denuncia'] == 2) {
-		/* Np se efectua la denuncia porque ya se ha denunciado */
+		/* No se efectúa la denuncia porque ya se ha denunciado */
 	}
 	header('location: index.php');
 }
@@ -134,11 +136,12 @@ if (isset($_GET['denuncia'])) {
 				<li>
 					<input type="hidden" name="contenido_oculto_perfil" value="<?php
                  	echo " El nombre del usuario es: " .
-				 	$usuario[0]['nombre']."Discapacidad ".$usuario[0]['discapacidad']."Profesión ".$usuario[0]['profesion']."País ".$usuario[0]['pais'] ?>">
+					 $usuario[0]['nombre']."Discapacidad ".$usuario[0]['discapacidad']."Profesión ".$usuario[0]['profesion']."País ".$usuario[0]['pais'] ?>">
+					<input type="hidden" id="mensaje_perfil" value="<?php echo tiempo_sesion_mensaje(); ?>">
 				 </li>
             </ul>
         </li>
-        <?php /*SI CodUsua diferente de la misma variable como argumento pero de la SESSION evidentemente es que nos encontramos en otro perfil */ ?>
+        <?php /*Si CodUsua diferente de la misma variable como argumento pero de la SESSION evidentemente es que nos encontramos en otro perfil */ ?>
         <?php if ($_GET['CodUsua'] != $_SESSION['CodUsua']) : ?>
         <?php if (empty($verificar_amigos)) : ?>
         <li><a id="agregar-amigo" href="perfil.php?CodUsua=<?php echo $_GET['CodUsua']; ?>&&agregar=<?php echo $_GET['CodUsua']; ?>">Agregar</a></li>
@@ -162,7 +165,7 @@ if (isset($_GET['denuncia'])) {
 		
 		<?php 
 		/*
-		 Hay 4 posibilidades debido al condicional $verificar_amigos, que se procesa en el codigo php superior debido a amigos::verificar, evidentemente el usuario de SESSION sera el unico que tendra la posibilidad de ver siempre "Editar" 
+		 Hay 4 posibilidades debido al condicional $verificar_amigos, que se procesa en el código php superior debido a amigos::verificar, evidentemente el usuario de SESSION sera el único que tendrá la posibilidad de ver siempre "Editar" 
 		 */
 		?>
         <?php endif; ?>
@@ -172,10 +175,10 @@ if (isset($_GET['denuncia'])) {
 
 
 <?php require('publicacion.php'); ?>
-<?php /* Abajo de el header > perfil debemos ubicar abajo todas las publicaciones que impliquen al usuario CodUsuario de la pagina actual, porque puede darse el caso que estemos en el perfil de otro usuario y sus publicaciones solo son de aquellas en las cual el ha publicado*/ ?>
+<?php /* Abajo de el header > perfil debemos ubicar todas las publicaciones que impliquen al usuario CodUsuario de la página actual, porque puede darse el caso que estemos en el perfil de otro usuario y sus publicaciones solo son de aquellas en las cual el ha publicado*/ ?>
 
 </body>
 </html>
 <?php
-  ob_end_flush() /* ;Para evitar problemas de header, existe un controlador de flujo tambien al inicio del codigo de este archivo */
+  ob_end_flush() /* ;Para evitar problemas de header, existe un controlador de flujo también al inicio del codigo de este archivo */
  ?>

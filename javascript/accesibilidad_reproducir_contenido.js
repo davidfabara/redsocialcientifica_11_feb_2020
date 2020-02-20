@@ -32,10 +32,7 @@ function responsive_voice(contenido,post){
 
     }else{  
         
-        var url="http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q="+contingencia+"+.&tl=es";
-        $('audio').attr('src', url).get(0).play();
-         
-         
+                
 
     }
 

@@ -3,6 +3,11 @@
 require('funciones.php');
 require('clases/clases.php');
 
+if(isset($_SESSION['mensaje'])){
+}else{
+	$_SESSION['mensaje']='';
+}
+
 $error = "";
 if(isset($_POST['registrar']))
 {
@@ -20,22 +25,26 @@ if(isset($_POST['registrar']))
 	if(datos_vacios($datos) == false)
 	{
 	
-		if(!strpos($datos[1], " ")) /*strpos, permite saber si un carácter como argumento esta presente dentro de algun String dado , $datos[1] implica a el usuario  y queremos controlar que NO tenga espacios en blanco  con el argumento " " por ello !strpos */
+		if(!strpos($datos[1], " ")) /*strpos, permite saber si un carácter como argumento esta presente dentro de algun string dado , $datos[1] implica a el usuario  y queremos controlar que no tenga espacios en blanco  con el argumento " " por ello !strpos */
 		{
-			if(empty(usuarios::verificar($datos[1]))) /* Se envia $_POST['nombre'] a la función verificar de la clase usuarios para verificar si existe o no el ususario*/
+			if(empty(usuarios::verificar($datos[1]))) /* Se envía $_POST['usuario'] a la función verificar de la clase usuarios para verificar si existe o no el ususario*/
 			{
-				usuarios::registrar($datos); /*llamamos a la funcion registrar que esta dentro de clase usuarios */
+				usuarios::registrar($datos); /*llamamos a la función registrar que esta dentro de la clase usuarios */
+				$_SESSION['mensaje'] = 'Registro exitoso, por favor regresar al login y suministra tus datos de usuario y contraseña';
 			}
 			else{
 				$error .= "usuario existente";
+				$_SESSION['mensaje'] = 'El campo usuario ya existe, trata de cambiarlo por otro';
 			}
 		}
 		else
 		{
 			$error .= "usuario con caracteres con espacios";
+			$_SESSION['mensaje'] = 'El campo usuario no debe tener espacios en blanco ni carácteres especiales, por favor cambiarlos por otro';
 		}
 	}else{
 		$error .= "Hay campos vacios, debe llenarlos";
+		$_SESSION['mensaje'] = 'Debe llenar todos los datos del formulario de registro.';
 	}
 }
 
@@ -51,13 +60,14 @@ if(isset($_POST['registrar']))
 	<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 	<script src="javascript/librerias/artyom.js"></script>
 
-	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+	<script src="https://code.responsivevoice.org/responsivevoice.js?key=7RpgTxHY"></script>
 	<script src="javascript/accesibilidad_registro.js"></script>
 </head>
 <body>
 	<div class="contenedor-form">
 
-	<p id="registro-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_registro()"><strong>📢</strong></p>
+	<p id="registro-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_registro()"><strong>Ayuda📢</strong></p>
+	<input type="hidden" id="mensaje_registro" value="<?php echo $_SESSION['mensaje'];$_SESSION['mensaje']=''; ?>">
 	
 		<h1>Registro</h1>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -88,12 +98,12 @@ if(isset($_POST['registrar']))
 		<?php endif;?> 
 		<?php
 			/*
-			La class=error permite invocar los estilos en el archivo login.css para color rojo en :  .contenedor-form .error{, recordar que .contenedor-form implica a todo el formulario de registro y también si el $error no está vacío(porque el usuario cometió un error en el registro), entonces si no ha cometido tal error, NO SE cargará ese parrafo en código html sobre la interfaz en pantalla
+			La class=error permite invocar los estilos en el archivo login.css para color rojo en :  .contenedor-form .error{, recordar que .contenedor-form implica a todo el formulario de registro y también si el $error no está vacío(porque el usuario cometió un error en el registro), entonces si no ha cometido tal error, no se cargará ese parrafo en código html sobre la interfaz en pantalla
 			*/ 
 		?>
 		<div class="registrar">
 
-			<a id="tengoCuenta" href="login.php">Ir a login</a>
+			<a id="tengoCuenta" href="login.php" class="enlace-boton">Ir a login</a>
 
 		</div>
 	</div>

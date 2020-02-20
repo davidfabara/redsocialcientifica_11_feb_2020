@@ -16,25 +16,34 @@ function ejecutarArtyom() {
         speed: 1.0 // Velocidad normal con  1
         
         });
-        
-        artyom.say("Estas en el perfil, comando ayuda disponible");
+        document.getElementsByClassName('enlace-boton-ok').onclick=function(){artyom.say("Calificaste la publicación")};
+
+        document.getElementsByClassName('enlace-boton-denuncia').onclick=function(){artyom.say("Emitiste una denuncia")};
+        let mensaje=document.getElementById('mensaje_perfil').value;
+        artyom.say(mensaje+". Estas en el perfil, en la cabecera está el acceso a la página principal, búsqueda, solicitudes, notificaciones, y perfil, en el cuerpo del documento se encuentra un área de los datos del perfil del usuario, en la sección inferior está la lista de publicaciones, para control por voz pronuncia 'ayuda'.");
 
 
 };
 
 function ejecutar_ayuda() {
 
-    artyom.say( "Estas en el perfil, se tiene un menú superior con accesos, en el cuerpo del documento se tiene el perfil seguido de la lista de publicaciones de ese perfil con comandos de voz pronuncia: opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o detalle de perfil, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar , opción 9 para acceder a la lista de publicaciones, opción 10 o editar perfil, para comentar pronunciar ayuda para comentar, para crear un texto, pronuncia ayuda para crear texto, para enviar una solicitud de amistad, pronuncia, enviar solicitud o simplemente, agregar");          
+    artyom.say( "Estas en el perfil, se tiene un menú superior con accesos, en el cuerpo del documento se tiene el perfil seguido de la lista de publicaciones de ese perfil con comandos de voz pronuncia: opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o detalle de perfil, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar , opción 9 para acceder a la lista de publicaciones, opción 10 o editar perfil, para comentar pronunciar ayuda para comentar, para crear un texto, pronuncia ayuda para crear texto, para enviar una solicitud de amistad, pronuncia, enviar solicitud o simplemente, agregar, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda.Para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
 
 }
 
 function ejecutar_ayuda_texto(){
 
     artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto,para corregir un texto creado, pronuncia, corregir texto, para el caso de pegar un texto en algún input, pronunciar pegar seguido de la palabra texto o deletrear seguido de la palabra elemento seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer comentario, sería, pegar texto en elemento 1 de comentario.");
+
+
+}
+function ejecutar_ayuda_ejemplos(){
+    artyom.say("Los comandos de voz implican pronunciar palabras lentamente y de forma correcta, como ejemplos. 1. Para crear un texto de prueba, invocamos al comando de voz pronunciando crear texto, en este caso el texto herramientas de accesibilidad, notar que se puede seguir invocando el texto , podemos corregirlo pronunciando corregir texto, esta instrucción nos dará pautas para corregir ese texto. 2. Para deletrear, pronunciar deletrear seguido de la letra a invocar, ejemplo para construir la palabra Fabara lo hacemos con deletrear F mayúscula,  luego deletrear a, luego deletrear b grande, luego deletrear a, luego deletrear ere, luego deletrear a. 3. Para agregar texto en un elemento concreto de forma compleja , por ejemplo para ingrezar el comentario concuerdo con su publicación sobre la publicación 1, se hace pronunciando, elemento 1 de comentario con concuerdo con su publicación");
+
 }
 function ejecutar_ayuda_comentar(){
 
-    artyom.say("Para el caso de comentar, se invoca con el comando: elemento seguido de la palabra número seguido del número de elemento seguido de la palabra, de, seguido de la palabra, comentario, seguido de la palabra, con, seguido del texto libre a dictar a partir de ese momento, ejm.");
+    artyom.say("Para el caso de comentar, se invoca con el comando: elemento seguido del número de elemento seguido de la palabra, de, seguido de la palabra, comentario, seguido de la palabra, con, seguido del texto libre a dictar a partir de ese momento, ejm. Elemento 1 de comentario con, seguido del valor a agregar");
 }
 function pegarDeletreo(parametro){
 
@@ -89,6 +98,9 @@ if (annyang) {
         'ayuda para crear texto': () => {
             ejecutar_ayuda_texto();
           
+        },
+        'ayuda de ejemplos': () => {
+            ejecutar_ayuda_ejemplos();
         },
         'leer solicitudes': () => {
             artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);
@@ -238,7 +250,7 @@ if (annyang) {
         },
         'cerrar': () => {
             console.log("Cerrar ejecutado");
-
+            artyom.say("Usted ha cerrado la sesión, desplegando a página inicial de login");
             document.getElementById('navegacion_cerrar').click();
             //document.getElementById('info-solicitud').click();
      
@@ -436,6 +448,14 @@ if (annyang) {
               
 
         },
+        'poner okay en publicación *num': (num) => {
+
+            invocar_input_formulario('elementoOk', num, '');
+        },
+        'poner denunciar en publicación *num': (num) => {
+
+            invocar_input_formulario('elementoDenuncia', num, '');
+        },
         'reproducir publicación *value': (value) => {
             var value=value.replace('uno','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
             if(value==='diez'||value==='10'){
@@ -462,7 +482,7 @@ if (annyang) {
         num=num.trim();
         if(num==='una'){
  
-         num=num.replace('una','1');
+            num=num.replace('una','1').replace('un','1');
         }else{
         
         }
@@ -473,12 +493,15 @@ if (annyang) {
          }
  
          var num=parseInt(num)-1;
-         if (num===0&&tipoInput!="comentario"){
-             num=""; espacio="";
-         }
-         if(tipoInput==="comentario"){
-             espacio="";
-         }
+
+        if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
+            espacio="";
+        }else{
+            if (num===0&&tipoInput!="comentario"){
+                num=""; espacio="";
+            }
+        }
+
                  
  
             /* Comprobando la existencia del identificador invocado con la voz, para proceder a agregar el valor del input suministrado por invocación asociada con comando de voz 
@@ -486,15 +509,24 @@ if (annyang) {
                     valor=valor.substring(2, valor.length);
              */
  
-         if(document.body.contains( document.getElementById(tipoInput+ espacio+ num))){
-                 document.getElementById(tipoInput+ espacio+ num).value=val.charAt(0).toUpperCase() + val.slice(1);
-                 artyom.say("Estas escribiendo en"+ tipoInput+" elemento "+(num+1)+", "+val);
-                 document.getElementById(tipoInput+ espacio+ num).focus();
-         }else{
-                 artyom.say("El imput no existe, volver a intentar");
-                 console.log("El número de elemento es "+num+". El input  de texto es: "+val);
- 
-         }
+            if(document.body.contains( document.getElementById(tipoInput+ espacio+ num))){
+                if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
+                    document.getElementById(tipoInput+ num).click();
+                    if(tipoInput==="elementoOk")
+                        artyom.say("Has puesto ok en la publicación "+(num+1));
+                    if(tipoInput==="elementoDenuncia")
+                        artyom.say("Has puesto una denuncia en la publicación "+(num+1));
+                }else{
+                    document.getElementById(tipoInput+ espacio+ num).value=val.charAt(0).toUpperCase() + val.slice(1);
+                    artyom.say("Estas escribiendo en"+ tipoInput+" elemento "+(num+1)+", con:  "+val);
+                    document.getElementById(tipoInput+ espacio+ num).focus();
+                }
+    
+            }else{
+                    artyom.say("El imput no existe, volver a intentar");
+                    console.log("El tipo input es: ("+tipoInput+") . El número de elemento es "+num+". El input  de texto es: "+val);
+    
+            }
             /* Recordar que cada estructura, tanto resumen, contenido, conclusiones, recomendaciones tienen un identificador no indexado por ello si num===0 simplemente queda vacio como si sucede con sus hijos en jerarquia del array tridimensional pero basado en el ID mas no en el nombre ejm resumen 1, el cual seria el primer elemento como hijo de resumen*/
  
      }

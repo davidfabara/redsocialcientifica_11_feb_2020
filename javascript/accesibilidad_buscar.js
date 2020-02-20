@@ -11,22 +11,22 @@ responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 window.addEventListener('load', ejecutarArtyom);
 function ejecutarArtyom() {
         artyom.initialize({
-        lang: "es-ES", // idioma nativo para reproducción del lector
+        lang: "es-ES", // Idioma nativo para reproducción del lector
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
-        listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador !
+        listen: false, //  Esta variable con FALSE permite desactivar el sintetizador !
         debug: true, // Muestra un informe en la consola
         speed: 1.0 // Velocidad normal con  1
         
         });
-        
-        artyom.say("Estas en la sección de buscar, comando ayuda disponible");
+        let mensaje=document.getElementById('mensaje_buscar').value;
+        artyom.say(mensaje+". Te encuentras en la sección de buscar, tienes la sección de cabecera en la parte superior,  puedes buscar en la cabecera o directamente en el segundo campo de búsqueda por título de publicación o usuario o por categoría, comando ayuda disponible");
 
 
 };
 
 function ejecutar_ayuda() {
 
-    artyom.say( "Estas el la sección de buscar,  con comandos de voz pronuncia opción 1 o página principal, opción 2, para enfocar en buscar, opción 3, para enfocar en el campo de búsqueda por título o categoría, opción 4 para escuchar ayuda, opción 5, para ver solicitudes, opción 6, para ver las noticias, opción 7 para acceder a tu perfil, opción 8 para cerrar, para crear un texto, pronuncia ayuda para crear texto");          
+    artyom.say( "Te encuentras en el la sección de buscar,  con comandos de voz pronuncia opción 1 o página principal, opción 2, para enfocar en buscar, opción 3, para enfocar en el campo de búsqueda por título o categoría, opción 4 para escuchar ayuda, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar, para crear un texto, pronuncia ayuda para crear texto");          
 
 }
 
@@ -98,6 +98,12 @@ if (annyang) {
           
 
         },
+        'publicar': () => {
+            document.getElementById('vinculo_principal').click();
+            
+          
+
+        },
         'opción 2': (value) => {
             console.log("opcion2 ejecutado");
             artyom.say("Pronunciar buscar, seguido de tu parámetro de búsqueda, para acceder, presionar la tecla enter");
@@ -155,9 +161,23 @@ if (annyang) {
             //document.getElementById('info-solicitud').click();
      
         },
+        'perfil': () => {
+            console.log("Perfil ejecutado");
+
+            document.getElementById('navegacion_perfil').click();
+            //document.getElementById('info-solicitud').click();
+     
+        },
         'opción 8': () => {
             console.log("Cerrar ejecutado");
 
+            document.getElementById('navegacion_cerrar').click();
+            //document.getElementById('info-solicitud').click();
+     
+        },
+        'cerrar': () => {
+            console.log("Cerrar ejecutado");
+            artyom.say("Usted ha cerrado la sesión, desplegando a página inicial de login");
             document.getElementById('navegacion_cerrar').click();
             //document.getElementById('info-solicitud').click();
      

@@ -15,7 +15,7 @@ function ejecutarArtyom() {
         });
         let mensaje=document.getElementById('mensaje_registro').value;
         
-        artyom.say(mensaje+"Te encuentras en el registro, se tiene 2 campos de entrada, el usuario y password, comando ayuda disponible")
+        artyomSay(mensaje+"Te encuentras en el registro, se tiene 7 campos de entrada, discapacidad visual que por defecto está seleccionado sin discapacidad, luego le siguen los campos nombre, usuario, password, país, profesión, captha, el botón de registrar y el acceso para ir a login, para pausar el lector pronunciar, pausar lector,  para ayuda pronuncia, ayuda")
 
 
 
@@ -24,14 +24,27 @@ function ejecutarArtyom() {
 
 function ejecutar_ayuda_registro() {
 
-    artyom.say("Te encuentras en el formulario de registro, se tiene 6 campos de entrada, el primero es el tipo de discapacidad visual, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), los siguientes son nombre, usuario, password, país, profesión, los cuales al nombrarlos seguido del valor de entrada puedes registrarte, al final pronuncias, registrar, o pronunciar ir a login para regrezar, pronunciar ayuda avanzada para escritura asistida");
+    artyomSay("Te encuentras en el formulario de registro, se tiene 7 campos de entrada, el primero es el tipo de discapacidad visual que por defecto está seleccionado sin discapacidad, pronuncia discapacidad visual seguido del número del uno al cuatro para(moderada, grave, grave o ciega, protección de la vista), los siguientes campos son nombre, usuario, password, país, profesión, captcha, en el caso de captcha pronunciar reproducir clave para escuchar y se posicionará automáticamente en ese campo captcha, con comandos de voz representativos hacia estos input o suministrando los valores manualmente, seguido del valor de entrada puedes registrarte, al final pronuncias, registrar, o pronunciar ir a login para regrezar, pronunciar ayuda avanzada para escritura asistida");
           
 }
 function ejecutar_ayuda_avanzada(){
-    artyom.say("Para guardar en memoria pronuncia crear texto o para  deletrear di deletrear, seguido del carácter así susecivamente, luego pronuncias, pegar texto o deletrear, o borrar según sea el caso, seguido del nombre del input al que deseas asignar, ejemplo pegar texto en usuario.");
+    artyomSay("Para guardar en memoria pronuncia crear texto o para  deletrear di deletrear, seguido del carácter así susecivamente, luego pronuncias, pegar texto o deletrear, o borrar según sea el caso, seguido del nombre del input al que deseas asignar, ejemplo pegar texto en usuario. Puedes enfocarte con un teclado en braille en los campos nombre, usuario o password, país, profesión, captha,  pronunciando, ejemplo enfocar en usuario");
 
 }
+function comprobar_captcha(){
 
+    var baseConocimiento=["El nombre de marlon es: ", "Algo que que es correcto es incorrecto, si o no para respuesta", "La multiplicación de 7 por 2 es: ", "La multiplicación de 12 por 8 dividido por 8 por 12 es:", "Escriba  la palabra dado en orden inverso", "Escriba solo las vocales de la palabra angelical", "Escriba solo las vocales de la palabra estados", "Escriba la operación que resulta de 12 por 10", "Un sinónimo de grande es alto, responda si o no", "Un sinónimo de pequeño es corto, responda si o no"];
+
+    let i=(Math.random()*baseConocimiento.length);
+    let selectCaptcha=baseConocimiento[parseInt(i)];
+    console.log("Ejecutado, función comprobar_captcha, con valor: "+selectCaptcha);
+
+     responsive_voice("Las respuestas son en minúsculas y sin espacios. La clave es: "+selectCaptcha+ ", se enfocará automáticamente en el campo captcha para respuesta"); 
+
+     document.getElementById('captcha-registro').focus();
+
+
+}
 function correccion(num, val){
     /* Corregir elementos de un texto actual */
     var indice=parseInt(num)-1;
@@ -53,7 +66,7 @@ function correccion(num, val){
     }
     texto=texto.trim(); //Eliminar los espacios en blanco en las secciones de los extremos de la cadena
     console.log("Posición de correccion:"+(indice+1)+", la corrección sería: "+val);
-    artyom.say("Texto actual:"+texto);
+    artyomSay("Texto actual:"+texto);
     console.log("Texto actual:"+texto);
 
 
@@ -89,9 +102,9 @@ function pegarElementos(tipo_input, tipoElemento){
                 tipo_input='password'; /* Para el procesamiento de salida del lector */
             if(tipo_input==='profe')
                 tipo_input='profesión' /* Se accede por el nombre */
-                artyom.say("Se ha pegado el "+tipoElemento+" en "+tipo_input);
+                artyomSay("Se ha pegado el "+tipoElemento+" en "+tipo_input);
         }else{
-            artyom.say("No existe el input con nombre : "+tipo_input);
+            artyomSay("No existe el input con nombre : "+tipo_input);
         }
                        
     }
@@ -118,9 +131,18 @@ annyang.setLanguage('es-ES');
             ejecutar_ayuda_avanzada();
 
         },
+        'pausar lector': () => {
+            pausar_lector();
+        },
+        'reanudar lector': () => {
+            reanudar_lector();
+        },
+        'cancelar lector': () => {
+            cancelar_lector();
+        },
         'discapacidad visual *value': (value) => {
 
-            artyom.say(" Pronuncia discapacidad visual seguido del número : 1 para sin discapacidad, 2 para discapacidad moderada , 3 para discapacidad grave o ciega, 4 para protección de la vista");
+            artyomSay(" Pronuncia discapacidad visual seguido del número : 1 para sin discapacidad, 2 para discapacidad moderada , 3 para discapacidad grave o ciega, 4 para protección de la vista");
             value=value.replace('uno','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9').replace(' ','');
 
             value=parseInt(value.charAt(0)); /* Conversión a entero */
@@ -131,21 +153,21 @@ annyang.setLanguage('es-ES');
                 document.getElementById('discapacidad-registro').children[value].selected=true;
             }
             
-            artyom.say("seleccionado la opcion"+(value+1));
+            artyomSay("seleccionado la opcion"+(value+1));
             console.log("seleccionado la opcion"+(value+1));
 
 
  
-           },
+        },
         
         'nombre *value': (value) => {
-            artyom.say("Escribiste en nombre."+value);
+            artyomSay("Escribiste en nombre."+value);
             console.log($("#nombre-registro").val(value.charAt(0).toUpperCase() + value.slice(1)));
                 
         },
                 
         'usuario *value': (value) => {
-            artyom.say("Escribiste en usuario."+value);
+            artyomSay("Escribiste en usuario."+value);
             $("#usuario-registro").val(
                 value
                 .toLowerCase()
@@ -157,7 +179,7 @@ annyang.setLanguage('es-ES');
             /* Técnicas para mejorar la presición de la síntesis de voz para escritura de frases, palabras o letras concretas */
 
             if(deletreo == "")
-                artyom.say("Decir palabras que evoquen el primer carácter para aumentar la presición, ejemplo david para el caracter d");
+                artyomSay("Decir palabras que evoquen el primer carácter para aumentar la presición, ejemplo david para el caracter d");
 
             if(value.match("abrir paréntesis"))
                 value=value.replace(value,'(');
@@ -207,7 +229,7 @@ annyang.setLanguage('es-ES');
             deletreo += value.charAt(0);
 
 
-           artyom.say("Dictado actual:"+deletreo);
+           artyomSay("Dictado actual:"+deletreo);
            console.log("Dictado actual:"+deletreo);
             
 
@@ -219,23 +241,23 @@ annyang.setLanguage('es-ES');
             }else{
                 texto+=" "+value;
             }
-            artyom.say("Texto actual:"+texto);
+            artyomSay("Texto actual:"+texto);
             console.log("Texto actual:"+texto);
         },
         'leer deletrear':() => {
             if(deletreo===""){
-                artyom.say("Deletreo actual vacío");
+                artyomSay("Deletreo actual vacío");
             }else{
-                artyom.say("Deletreo actual:"+deletreo);
+                artyomSay("Deletreo actual:"+deletreo);
             }
 
             console.log(deletreo);
         },
         'leer texto':() => {
             if(texto===""){
-                artyom.say("Texto actual vacío");
+                artyomSay("Texto actual vacío");
             }else{
-                artyom.say("Texto actual:"+texto);
+                artyomSay("Texto actual:"+texto);
             }
 
             console.log(texto);
@@ -243,7 +265,7 @@ annyang.setLanguage('es-ES');
         'pegar deletrear en *value': (value) => {
             if(value==="texto"){
                 texto+=deletreo;
-                artyom.say("Texto actual:"+texto);
+                artyomSay("Texto actual:"+texto);
                 console.log("Texto actual:"+texto);
             }else{
                 pegarElementos(value,"deletreo");
@@ -256,15 +278,15 @@ annyang.setLanguage('es-ES');
         'borrar deletrear': () => {
             deletreo = '';
             console.log('deletreo esta:' + deletreo);
-            artyom.say('deletreo borrado');
+            artyomSay('deletreo borrado');
         },
         'borrar texto': () => {
             texto = '';
             console.log('Texto actual está vacío');
-            artyom.say("Texto actual está vacío");
+            artyomSay("Texto actual está vacío");
         },
         'corregir texto': () => {
-            artyom.say("Decir el número donde se presente:");
+            artyomSay("Decir el número donde se presente:");
 
 
             var texto_a_corregir=texto.split(" ");
@@ -278,7 +300,7 @@ annyang.setLanguage('es-ES');
                 aux apunta a los elementos individuales del array texto_a_corregir
              */
             }
-            artyom.say("Como ejemplo, para corregir la primera palabra, decir corregir elemento 1 con, seguido del texto a corregir. La corrección es aplicada a : "+acum);
+            artyomSay("Como ejemplo, para corregir la primera palabra, decir corregir elemento 1 con, seguido del texto a corregir. La corrección es aplicada a : "+acum);
 
             console.log("Texto para corregir, el array original es:"+texto_a_corregir);
         },
@@ -288,13 +310,13 @@ annyang.setLanguage('es-ES');
 
         //introducimos el password
         'password *value': (value) => {
-            artyom.say("Escribiste en password."+value);
+            artyomSay("Escribiste en password."+value);
             $("#registro-password").val(value.toLowerCase());
 
         },
         //mostramos los valores del formulario
         'país *value': (value) => {
-            artyom.say("Escribiste en país."+value);
+            artyomSay("Escribiste en país."+value);
             $("#registro-pais").val(value.charAt(0).toUpperCase() + value.slice(1));
             /* Conversión a mayúscula solo el primer carácter */
 
@@ -307,12 +329,22 @@ annyang.setLanguage('es-ES');
         },
 
         'profesión *value': (value) => {
-            artyom.say("Escribiste en profesión."+value);
+            artyomSay("Escribiste en profesión."+value);
             $("#registro-profesion").val(value.charAt(0).toUpperCase() + value.slice(1));
 
         },
+
+        'reproducir clave': () => {
+            $("#captcha-sms-oculto").click();
+
+        },
+        'captcha *value': (value) => {
+            artyomSay("Escribiste en el captcha ."+value);
+            $("#captcha-registro").val(value.charAt(0).toLowerCase() + value.slice(1));
+
+        },
         'registrar': () => {
-            artyom.say("Registrado");
+            artyomSay("Registrado");
             $("#registro-submit").click();
 
         },
@@ -344,9 +376,46 @@ annyang.setLanguage('es-ES');
         document.getElementById('tengoCuenta').click();
 
         },
+        'enfocar en *tipoInput': (tipoInput) => {
+            /* Para enfocar en algún input, útil para sistemas híbridos de accesibilidad */
 
-    };
+           var enfocado=tipoInput;
+           
+           if(tipoInput==="discapacidad visual"||tipoInput==="discapacidad"){
+            tipoInput='opcion2';
+           }
+           if(tipoInput==="nombre"||tipoInput==="nomb"){
+                tipoInput='nombre-registro';
+            }
+            if(tipoInput==="usuario"||tipoInput==="user"){
+                tipoInput='usuario-registro';
+            }
+            if(tipoInput==="password"||tipoInput==="contraseña"){                
+                tipoInput='registro-password';
+            }
+            if(tipoInput==="París"||tipoInput==="país"||tipoInput==="pais"){                
+                tipoInput='registro-pais';
+                enfocado="país";
+            }
+            if(tipoInput==="profesión"||tipoInput==="profesion"){                
+                tipoInput='registro-profesion';
+            }
+            if(tipoInput==="captcha"||tipoInput==="capture"||tipoInput==="casa"){                
+                tipoInput='captcha-registro';
+            }
 
+
+            if(document.body.contains( document.getElementById(tipoInput))){
+
+                    artyom.say("Enfocado en"+ enfocado);
+                    document.getElementById(tipoInput).focus();
+            }else{
+                    artyom.say("El input no existe, volver a intentar");
+                    console.log("El input incorrecto es: "+enfocado);    
+            }              
+    
+    },
+};
     // Añadimos los comandos
 
 

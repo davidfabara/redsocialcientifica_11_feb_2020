@@ -88,11 +88,18 @@ verificar_session();
 	 <script type="text/javascript" src="javascript/accesibilidad_reproducir_contenido.js"></script>
 	 <script src="javascript/accesibilidad_editar_perfil.js"></script>
  </head>
+ <div class="botones_lector_reproduccion">
+		<h1>Lector</h1>
+		<button id="boton_pausar" class="boton_lector" onclick="pausar_lector()">Pausar</button>
+		<button id="boton_reanudar" class="boton_lector" onclick="reanudar_lector()">Reanudar</button>
+		<button id="boton_cancelar" class="boton_lector" onclick="cancelar_lector()">Cancelar</button>	
+</div>
  <body>
 	
  	<div class="contenedor-form">
  		<h1>Editar perfil</h1>
-		 <p id="editar-perfil-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_editar_perfil()"><strong>📢</strong></p>
+
+		 <button id="editar-perfil-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_editar_perfil()">Ayuda</button>
 
 		 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="post">
 			<label for="nombre-edit"><strong>Nombre</strong>
@@ -132,7 +139,7 @@ verificar_session();
  			<input type="submit" value="Editar" name="editar" id="edit-submit" class="log-btn">
  		</form>
  		<div class="registrar">
- 			<a id="return-perfil" href="perfil.php?CodUsua=<?php echo $_SESSION['CodUsua']; ?>">Volver al perfil</a>
+ 			<a id="return-perfil" href="perfil.php?CodUsua=<?php echo $_SESSION['CodUsua']; ?>" class="enlace-boton">Volver al perfil</a>
 			 <?php /* Para volver al perfil del usuario de SESSION */?>
  		</div>
  	</div>

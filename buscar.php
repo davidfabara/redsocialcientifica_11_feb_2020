@@ -18,9 +18,9 @@ if(isset($_GET['busqueda']))
 	/* Para q se reconozca ponemos a "%$nombre%" como un array asociativo sobre ':nombre', si lo ponemos sobre la consulta SQL nos podría dar conflictos por anidamiento de comillas dobles.Recordando que las comillas dobles reconocen variables dentro de ellas, por ello permiten procesar la variable $nombre y el % implica que puede estar buscada por fragmentos de ese nombre puesto en búsqueda tanto en la parte izq como der.,y la posibilidad de que existan más usuarios con el mismo nombre */
 	$resultados = $consulta->fetchAll();
 	if(!empty($resultados)){
-		$_SESSION['mensaje'] = 'Tu búsqueda de usuario se ha realizado con éxito';
+		$_SESSION['mensaje'] = 'Tu búsqueda de usuario se ha realizado con éxito, también puedes encontrarlo en la sección de búsqueda por título o por categoría, si buscaste por esta última opción y presionaste enter, debes estar en la sección principal con el resultado de búsqueda';
 	}else{
-		$_SESSION['mensaje'] = 'No hay usuarios de coincidencias con tu búsqueda, trata , se puede buscar por título o por categoría';
+		$_SESSION['mensaje'] = 'La última consuta no dió usuarios de coincidencias con tu búsqueda, tratar de buscar por título o por categoría, si ya presionaste enter, debes encontrarte en la página principal con el resultado de búsqueda';
 	}
 
 

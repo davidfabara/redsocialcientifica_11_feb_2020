@@ -138,7 +138,16 @@ annyang.setLanguage('es-ES');
         'ayuda para texto': () => {
             ejecutar_ayuda_texto();
         },
-           'discapacidad visual *value': (value) => {
+        'pausar lector': () => {
+            pausar_lector();
+        },
+        'reanudar lector': () => {
+            reanudar_lector();
+        },
+        'cancelar lector': () => {
+            cancelar_lector();
+        },
+        'discapacidad visual *value': (value) => {
 
             artyom.say(" Pronuncia discapacidad visual seguido del número : 1 para sin discapacidad, 2 para discapacidad moderada , 3 para discapacidad grave o ciega, 4 para protección de la vista");
             value=value.replace('uno','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9').replace(' ','');

@@ -2,7 +2,7 @@
  <html lang="es">
  <head>
  	<meta charset="UTF-8">
- 	<title>Red Social Científica</title>
+ 	<title>Sitio Web Prototipo</title>
  	<link rel="stylesheet" href="icomoon/style.css"><!--iconos icomoon a importar configurable sobre los iconos en el archivo css del directorio icomoon/style.css  -->
 	
 	 <?PHP if(limpiar($_SESSION['discapacidad']) == limpiar('Discapacidad moderada') or limpiar($_SESSION['discapacidad']) == limpiar('Discapacidad grave o ciega') or ($_SESSION['discapacidad'])== limpiar('Sin discapacidad')):?>
@@ -48,15 +48,16 @@
 	<script src="https://code.responsivevoice.org/responsivevoice.js?key=7RpgTxHY"></script>
 	<script type="text/javascript" src="javascript/accesibilidad_reproducir_contenido.js"></script>
 
-
-
-
-
-
  </head>
+ <div class="botones_lector_reproduccion">
+		<h1>Lector</h1>
+		<button id="boton_pausar" class="boton_lector" onclick="pausar_lector()">Pausar</button>
+		<button id="boton_reanudar" class="boton_lector" onclick="reanudar_lector()">Reanudar</button>
+		<button id="boton_cancelar" class="boton_lector" onclick="cancelar_lector()">Cancelar</button>	
+</div>
  <body>
  	<header>
- 		 <a id="vinculo_principal" href="index.php"><h1 class= "titulo" >Red Social Científica</h1></a>
+ 		 <a id="vinculo_principal" href="index.php"><h1 class= "titulo" >Sitio Web Prototipo</h1></a>
 
  		<form action="buscar.php" method="get" id="buscar">
 		 	<label for="busqueda"><strong>Buscar:</strong></label>

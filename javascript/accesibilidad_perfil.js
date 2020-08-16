@@ -7,6 +7,7 @@ var siguiente="";
 responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 window.addEventListener('load', ejecutarArtyom);
+
 function ejecutarArtyom() {
         artyom.initialize({
         lang: "es-ES", // idioma nativo para reproducción del lector
@@ -27,7 +28,7 @@ function ejecutarArtyom() {
 
 function ejecutar_ayuda() {
 
-    artyom.say( "Estas en el perfil, se tiene un menú superior con accesos, en el cuerpo del documento se tiene el perfil seguido de la lista de publicaciones de ese perfil con comandos de voz pronuncia: opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o detalle de perfil, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar , opción 9 para acceder a la lista de publicaciones, opción 10 o editar perfil, para comentar pronunciar ayuda para comentar, para crear un texto, pronuncia ayuda para crear texto, para enviar una solicitud de amistad, pronuncia, enviar solicitud o simplemente, agregar, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda.Para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
+    artyom.say( "Estas en el perfil, se tiene un menú superior con accesos, en el cuerpo del documento se tiene el perfil seguido de la lista de publicaciones de ese perfil con comandos de voz pronuncia: ayuda, para recibir ayuda, o detalle de perfil para escuchar los datos del perfil de visita actual, para comandos del menú superior: opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o detalle de perfil, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar , opción 9 para acceder a la lista de publicaciones, opción 10 o editar perfil, para comentar pronunciar ayuda para comentar, para crear un texto, pronuncia ayuda para crear texto, para enviar una solicitud de amistad, pronuncia, enviar solicitud o simplemente, agregar, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda.Para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
 
 }
 
@@ -101,6 +102,15 @@ if (annyang) {
         },
         'ayuda de ejemplos': () => {
             ejecutar_ayuda_ejemplos();
+        },
+        'pausar lector': () => {
+            pausar_lector();
+        },
+        'reanudar lector': () => {
+            reanudar_lector();
+        },
+        'cancelar lector': () => {
+            cancelar_lector();
         },
         'leer solicitudes': () => {
             artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);
@@ -480,12 +490,7 @@ if (annyang) {
     function invocar_input_formulario(tipoInput,num,val){
 
         num=num.trim();
-        if(num==='una'){
- 
-            num=num.replace('una','1').replace('un','1');
-        }else{
-        
-        }
+        num=num.replace('uno','1').replace('un','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
         console.log("tipoInput es:"+tipoInput+", num ="+num+", val="+val);
         var espacio=" ";
          if(tipoInput==="comentario"){

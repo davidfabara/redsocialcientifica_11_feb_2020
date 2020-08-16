@@ -6,7 +6,8 @@
 <button id="boton_mostrar_subir" class="boton">Subir publicación</button>
 <div class="subir" style="display:block;">
     <div class="publi-info-perfil">
-        <label for="subir-sms-oculto" onclick="ejecutar_ayuda_subir()"><strong>Ayuda para subir:📢</strong></label>
+
+        <button id="subir-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_subir()">Ayuda para subir</button>
         <input type="hidden" id="mensaje_pagina_principal" value="<?php echo tiempo_sesion_mensaje(); ?>">
         <h1 class="speech-post" style="display:none;" id="subir-sms-oculto"></h1>
         <table>
@@ -161,7 +162,7 @@
             <table width="90%" border="1">
                 <tbody>
                     <tr>
-                        <td><input id="descripcionArchivos" type="button" value="Descripción de Archivos"></td>
+                        <td><input id="descripcionArchivos" name="descripcionArchivos_texto" type="button" value="Descripción de Archivo"></td>
                         <td>
                             <div id="addDescripcionArchivos"></div>
                         </td>

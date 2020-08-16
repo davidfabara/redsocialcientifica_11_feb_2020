@@ -18,12 +18,56 @@ body{
 	z-index: 3;
 }
 
+/********************************************************************************
+***************************   Botones para control de lector    ***************************************
+********************************************************************************/
+.botones_lector_reproduccion{
+	/*position: fixed;
+	top: 0;*/
+	zoom: 80%;
+	box-sizing: border-box;
+	width: 100%;
+	background:rgba(19, 17, 14, 0.719);
+	color: rgb(255, 255, 255);
+	/* rgba(216, 191, 137, 0.719);*/
+	/*#2c3e50*/
+	padding: 0.5px;
+	padding: 0.5% 05%;
+	
+	 /*z-index: 100;*/
 
+}
+.boton_lector:hover{
+	outline-style: none;
+	border-color: #2c3e50;
+	transition: 0.9s;
+	outline: none;
+    font-size: 2em;
+	height: 50px;
+}
 /********************************************************************************
 ***************************   CABECERA    ***************************************
 ********************************************************************************/
 
+.icono_reproducible{
+	border-top: 1px solid #850000;
+	border-bottom: 2px solid #804343;
+	border-left: 1px solid #e40202;
+	border-right: 2px solid #572a2a;
+	box-shadow: 20px 25px 20px rgba(53, 16, 16, 0.44);
+	background-color: #000000;
+	color: #ffffff;
+}
+.icono_reproducible:hover {
+	border-bottom: 1px solid #e40505;
+	border-top: 2px solid #9c1e1e;
+	border-right: 1px solid #970e0e;
+	border-left: 2px solid #581c1c;
+	box-shadow: 20px 25px 20px rgba(95, 14, 14, 0.44);
+	font-size: 2em;
+	transition: 0.9s;
 
+}
 header{
 	/*position: fixed;
 	top: 0;*/
@@ -312,6 +356,7 @@ header nav .info_usuario:hover #nav-perfil{
 	background: #2c3e50;
 	color: rgba(216, 191, 137, 0.719);
 	font-size: 2em;
+	transition: 0.9s;
 }
 
 #nav-perfil::after {
@@ -706,7 +751,8 @@ publi-info-perfil .publi-img-perfil :hover{
 	 padding: 5px 10px;
 	 border-radius: 5px;
 	 cursor: pointer; 
-	 font-size: 1em;
+	 font-size: 2em;
+	 transition: 0.9s;
 	 display:block;
 	 margin-left: auto;
   	 margin-right: auto;  

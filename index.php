@@ -129,7 +129,9 @@
 				}
 		
 			}
-
+			if(!empty($_POST['alt'])){
+				$contenido.="<br>"."Descripción de archivo adjunto: "."<br>".$_POST['alt'];
+			}
 
 		}
 				
@@ -150,7 +152,9 @@
 	}
 	$amigos = amigos::codigos_amigos($_SESSION['CodUsua']);
 	if(!empty($_GET['buscar'])){
-		$post = post::mostrarTodo_busqueda($_GET['buscar']);		
+		$post = post::mostrarTodo_busqueda($_GET['buscar']);
+		$_SESSION['mensaje']="Tu búsqueda por título o por categoría se ha realizado con éxito";
+		$_SESSION['tiempo'] = time();		
 	}else{
 		$post = post::mostrarTodo($amigos[0]['amigos'], $_SESSION['CodUsua']);
 	}

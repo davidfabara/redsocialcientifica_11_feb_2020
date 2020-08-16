@@ -8,32 +8,37 @@ window.addEventListener('load', ejecutarArtyom);
 
 function ejecutarArtyom() {
     /* Este mecanismo es predefinido por la página oficial de Artyom.com por lo cual los parámetros usados se deberían usar los mismos para el adecuado funcionamiento del sistema */
+
         artyom.initialize({
         lang: "es-ES", // idioma nativo para reproducción del lector
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
         listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador !
-        debug: true, // Muestra un informe en la consola
+        debug: true, // Muestra mensajes de tiempo de ejecución de hilos de funcionalidad
         speed: 1.0 // Velocidad normal con  1
         
         });
         
         let mensaje=document.getElementById('mensaje_login').value;
         
-        artyom.say(mensaje+"Te encuentras en el login, se tiene 2 campos de entrada, el usuario y password y el botón acceder, comando ayuda disponible");
+        artyomSay(mensaje+". Te encuentras en el login, se tiene 2 campos de entrada, el usuario y password y el botón acceder, comando ayuda disponible, para pausar el lector, pronunciar, pausar lector, para ayuda pronuncia, ayuda");
 
 
 };
+
 function localizacion_login(){
-    artyom.say("Te encuentras en el login, comando ayuda disponible");
+    artyomSay("Te encuentras en el login, comando ayuda disponible");
 }
 
 function ejecutar_ayuda_login() {
 
-    artyom.say( "Estas en el formulario de login, se tiene 2 campos de entrada usuario y password, puedes acceder a ellos pronunciándolos, el primero es usuario, el segundo es el password, el tercero es acceder si eres nuevo, di:  ir a registro, para ayuda avanzada, pronuncia este comando, para saber lo que escribiste, pronuncia, leer texto o deletreo según sea el caso");          
+
+    artyomSay("Estas en el formulario de login, se tiene 2 campos de entrada usuario y password, puedes acceder a ellos pronunciándolos, el primero es usuario, el segundo es el password, el tercero es acceder si eres nuevo, di:  ir a registro, para ayuda avanzada, pronuncia este comando, para saber lo que escribiste, pronuncia, leer texto o deletreo según sea el caso");
+
+
 
 }
 function ayuda_avanzada(){
-    artyom.say("Para guardar en memoria pronuncia crear texto o para  deletrear di deletrear, seguido del carácter así susecivamente, luego pronuncias, pegar texto o deletrear, o borrar según sea el caso, seguido del nombre del input al que deseas asignar, ejemplo pegar texto en usuario.");
+    artyomSay("Para guardar en memoria pronuncia crear texto o para  deletrear di deletrear, seguido del carácter así susecivamente, luego pronuncias, pegar texto o deletrear, o borrar según sea el caso, seguido del nombre del input al que deseas asignar, ejemplo pegar texto en usuario. Puedes enfocarte con un teclado en braille en los campos, usuario o password pronunciando, ejemplo enfocar en usuario");
 }
 
 function correccion(num, val){
@@ -58,7 +63,7 @@ function correccion(num, val){
     }
     texto=texto.trim(); //Eliminar los espacios en blanco en las secciones de los extremos de la cadena
     console.log("Posición de correccion:"+(indice+1)+", la correccion seria: "+val);
-    artyom.say("Texto actual:"+texto);
+    artyomSay("Texto actual:"+texto);
     console.log("Texto actual:"+texto);
 
 
@@ -95,9 +100,9 @@ function pegarElementos(tipo_input, tipoElemento){
             document.getElementsByName(tipo_input)[0].focus();
             if(tipo_input==='pass')
                 tipo_input='password'; /* Para el procesamiento de salida del lector */
-            artyom.say("Se ha pegado el "+tipoElemento+" en "+tipo_input);
+            artyomSay("Se ha pegado el "+tipoElemento+" en "+tipo_input);
         }else{
-            artyom.say("No existe el input con nombre : "+tipo_input);
+            artyomSay("No existe el input con nombre : "+tipo_input);
         }
                   
     }
@@ -118,6 +123,15 @@ if (annyang) {
         'ayuda avanzada': () => {
             ayuda_avanzada();
         },
+        'pausar lector': () => {
+            pausar_lector();
+        },
+        'reanudar lector': () => {
+            reanudar_lector();
+        },
+        'cancelar lector': () => {
+            cancelar_lector();
+        },
         'información': () => {
             $("#login-sms-oculto").trigger("click");
         },
@@ -130,7 +144,7 @@ if (annyang) {
             
                 
             );
-            artyom.say("Escribiste en usuario."+value);          
+            artyomSay("Escribiste en usuario."+value);          
             annyang.start();
         },
  
@@ -139,7 +153,7 @@ if (annyang) {
             /* Técnicas para mejorar la presición de la síntesis de voz para escritura de frases, palabras o letras concretas */
 
             if(deletreo == "")
-                artyom.say("Decir palabras que evoquen el primer carácter para aumentar la presición, ejemplo david para el carácter d");
+                artyomSay("Decir palabras que evoquen el primer carácter para aumentar la presición, ejemplo david para el carácter d");
 
             if(value.match("abrir paréntesis"))
                 value=value.replace(value,'(');
@@ -189,7 +203,7 @@ if (annyang) {
             deletreo += value.charAt(0);
 
 
-           artyom.say("Dictado actual : "+deletreo);
+           artyomSay("Dictado actual : "+deletreo);
            console.log("Dictado actual : "+deletreo);
 
         },
@@ -200,23 +214,23 @@ if (annyang) {
             }else{
                 texto+=" "+value;
             }
-            artyom.say("Texto actual : "+texto);
+            artyomSay("Texto actual : "+texto);
             console.log("Texto actual : "+texto);
         },
         'leer deletrear':() => {
             if(deletreo===""){
-                artyom.say("Deletreo actual vacío");
+                artyomSay("Deletreo actual vacío");
             }else{
-                artyom.say("Deletreo actual:"+deletreo);
+                artyomSay("Deletreo actual:"+deletreo);
             }
 
             console.log(deletreo);
         },
         'leer texto':() => {
             if(texto===""){
-                artyom.say("Texto actual vacío");
+                artyomSay("Texto actual vacío");
             }else{
-                artyom.say("Texto actual:"+texto);
+                artyomSay("Texto actual:"+texto);
             }
 
             console.log(texto);
@@ -224,7 +238,7 @@ if (annyang) {
         'pegar deletrear en *value': (value) => {
             if(value==="texto"){
                 texto+=deletreo;
-                artyom.say("Texto actual:"+texto);
+                artyomSay("Texto actual:"+texto);
                 console.log("Texto actual:"+texto);
             }else{
                 pegarElementos(value,"deletreo");
@@ -237,15 +251,15 @@ if (annyang) {
         'borrar deletrear': () => {
             deletreo = '';
             console.log('Deletreo actual es:' + deletreo);
-            artyom.say("Deletreo borrado:");
+            artyomSay("Deletreo borrado:");
         },
         'borrar texto': () => {
             texto = '';
             console.log('Texto actual está vacío');
-            artyom.say("Texto actual está vacío");
+            artyomSay("Texto actual está vacío");
         },
         'corregir texto': () => {
-            artyom.say("Decir el número donde se presente:");
+            artyomSay("Decir el número donde se presente:");
 
 
             var texto_a_corregir=texto.split(" ");
@@ -259,7 +273,7 @@ if (annyang) {
                 aux apunta a los elementos individuales del array texto_a_corregir
              */
             }
-            artyom.say("Como ejemplo, para corregir la primera palabra, decir corregir elemento 1 con, seguido del texto a corregir. La corrección es aplicada a : "+acum);
+            artyomSay("Como ejemplo, para corregir la primera palabra, decir corregir elemento 1 con, seguido del texto a corregir. La corrección es aplicada a : "+acum);
 
             console.log("Texto para corregir, el array original es:"+texto_a_corregir);
         },
@@ -270,11 +284,11 @@ if (annyang) {
         //introducimos el password
         'password *value': (value) => {
             $("#password-input").val(value.toLowerCase());
-            artyom.say("Escribiste en password."+value);
+            artyomSay("Escribiste en password."+value);
         },
         //mostramos los valores del formulario
         'acceder': () => {
-            artyom.say("Accediendo a página principal");
+            artyomSay("Accediendo a página principal");
             $("#submit-input").click();
 
         }, // Redirigir a la sección de registro
@@ -284,29 +298,45 @@ if (annyang) {
 
         },
         'dónde estoy': () => {
-            artyom.say("El lector se ha iniciado");
+            artyomSay("El lector se ha iniciado");
             console.log("El lector se ha iniciado");
           
 
         },
-       
+        'enfocar en *tipoInput': (tipoInput) => {
+            /* Para enfocar en algún input, útil para sistemas híbridos de accesibilidad */
 
+           var enfocado=tipoInput;
+           if(tipoInput==="usuario"||tipoInput==="nombre"){
+            tipoInput='login-usuario';
+            }
+            if(tipoInput==="password"||tipoInput==="contraseña"){                
+                tipoInput='password-input';
+            }
+
+
+            if(document.body.contains( document.getElementById(tipoInput))){
+
+                    artyom.say("Enfocado en"+ enfocado);
+                    document.getElementById(tipoInput).focus();
+            }else{
+                    artyom.say("El input no existe, volver a intentar");
+                    console.log("El input incorrecto es: "+enfocado);    
+            }              
+        },    
     };
 
     // Añadimos los comandos
-
 
     annyang.addCommands(commands);
 
     // Empezamos la escucha
     annyang.start();
 }
-if (!annyang) {
+if (!annyang){
     console.log("El reconocimiento de voz de annyang no es compatible con el navegador");
     
-        artyom.say(
+        artyomSay(
             "El reconocimiento de voz de annyang no es compatible con el navegador, se recomienda Chrome"
-        );
-
-    
+        );  
 }

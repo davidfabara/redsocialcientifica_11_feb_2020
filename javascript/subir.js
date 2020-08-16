@@ -42,9 +42,10 @@ function mostrar_subir() {
 
 
 function descripcionArchivos() {
-    descripcion += "<input type=" + '"text"' + ' name="alt" placeholder =' + "Descripción de archivo><br>";
+    descripcion = "<input type=" + '"text"' + ' name="alt"' + 'id="alt_descripcion" placeholder =' + "Descripción de archivo><br>";
     /*Si se hace click de manera iterativa, se puede invocar a varios eventos y como cadena es un acumulador, simplemente absorverá lo que tiene y aumentará lo asignado */
     document.getElementById("addDescripcionArchivos").innerHTML = descripcion;
+    document.getElementById("alt_descripcion").focus();
     /* La cadena se convierte a codigo html y se inyecta hacia el id de addDescripcionArchivos*/
 }
 
@@ -245,6 +246,7 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
         cita+= "<label>Apellido-s de "+tipoCita+ " para párrafo "+(y+2)+" (Separar cada uno con coma, si son 3 a 5 autores se separan con \"comas\" si hay más de 6 autores solo se pone el primero y \"et al. \" al final)<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"><label><br><hr>" +
 
         "<label>Año de "+tipoCita+" párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[anio]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Año de publicación\" class = \"contenidos\"></label><br><hr>";
+        artyom.say("Se ha creado un párrafo, un input de apellido si hay 3 a 5 autores se separan con comas, si son más de 6 se pone et al. al final, el siguiente input es año");
     }else
 
     if(tipoCita==="Cita basada en el texto(Cita textual y de menos de 40 palabras)"||tipoCita==="Cita basada en el texto(Cita textual y de más de 40 palabras)"||tipoCita==="Cita basada en el texto(parafraseo)"){
@@ -252,29 +254,27 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
 
         "<label>Año de "+tipoCita+" para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[anio]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Año de publicación\" class = \"contenidos\"></label><br><hr>"+
 
-        "<label>Páginas de "+tipoCita+" para párrafo (Con formato: p.número de páginas) "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[pagina]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Número de páginas\" class = \"contenidos\"></label><br><hr>"
-        
-        
-        ;
+        "<label>Páginas de "+tipoCita+" para párrafo (Con formato: p.número de páginas) "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[pagina]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Número de páginas\" class = \"contenidos\"></label><br><hr>";
+        artyom.say("Se ha creado un párrafo y un input de apellido si hay 3 a 5 autores se separan con comas, si son más de 6 se pone et al. al final, el siguiente input es año, el siguiente input es el número de páginas");
         
     }else
     if(tipoCita==="Autor corporativo"){
-        cita+= "<label>Nombre de organización de "+tipoCita+ " para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[Nom_organizacion]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>" +
+        cita+= "<label>Nombre de organización de "+tipoCita+ " para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>" +
 
-        "<label>Sigla de organización de "+tipoCita+ " para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[sigla]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>"+
+        "<label>Sigla de organización de "+tipoCita+ " para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>"+
 
         "<label>Año de "+tipoCita+" para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[anio]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Año de publicacion\" class = \"contenidos\"></label><br><hr>";
+
+        artyom.say("Se ha creado un párrafo y un input de apellido para el nombre de la organización, otro imput para la sigla de la organización, si hay 3 a 5 autores se separan con comas, si son más de 6 se pone et al. al final, el siguiente input es año.");
     }else 
     if(tipoCita==="Anónimo"){
         cita+= "<label>El apellido ponemos como 'Anónimo' "+tipoCita+ " para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>" +
 
         "<label>Año de "+tipoCita+" para párrafo "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[anio]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Año de publicación\" class = \"contenidos\"></label><br><hr>"+
 
-        "<label>Paginas de "+tipoCita+" para párrafo (Con formato: p.número de páginas) "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[pagina]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Número de páginas\" class = \"contenidos\"></label><br><hr>"
-        
-        
+        "<label>Paginas de "+tipoCita+" para párrafo (Con formato: p.número de páginas) "+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[pagina]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Número de páginas\" class = \"contenidos\"></label><br><hr>"   
         ;
-        
+        artyom.say("Se ha creado un párrafo y un input que implica al autor que se debe dejar como anom, el siguiente input es año, el siguiente input es el número de páginas");
     }else
     if(tipoCita==="Cita de una cita"){
         cita+= "<label>Apellido-s de autor de opinión o afirmación de "+tipoCita+ " para párrafo "+(y+2)+"(Separar cada uno con coma, si son 3 a 5 autores se separan con \"comas\" si hay más de 6 autores solo se pone el primero y \"et al.\" al final)<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>" +
@@ -282,6 +282,7 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
         "<label>Apellido-s de autor de la cita "+tipoCita+ " para párrafo "+(y+2)+"(Separar cada uno con coma, si son 3 a 5 autores se separan con \"comas\" si hay más de 6 autores solo se pone el primero y \"et al.\" al final)<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+ "[" + (++n) + "]" + "[apellido]"+"\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Apellido-s de autor\" class = \"contenidos\"></label><br><hr>"+
 
         "<label>Año de"+tipoCita+"para párrafo"+(y+2)+"<input type=\"text\"" + "name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (y) + "]" + "[" + (++n) + "]" + "[anio]"+ "\" id=\"" + tipoTextArea + " " + (++j) + "\" placeholder=\"Año de publicación\" class = \"contenidos\"></label><br><hr>";
+        artyom.say("Se ha creado un párrafo, un input que representa al apellido del autor de la opinión, el siguiente input representa al apellido del autor de la cita, el siguiente input representa al año de la publicación");
     }
 
 
@@ -340,7 +341,7 @@ function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoRef
 
         "<label>Título de "+tipoReferencia+"para párrafo"+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]" + "[" + (++n) + "]" + "[titulo]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"Título de la publicación\" class = \"contenidos\"></label><br><hr>" +
     
-        "<label>Ciudad de "+tipoReferencia+"para párrafo "+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]"+"[" + (++n) + "]" + "[ciudad]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"Ciudad\" class = \"contenidos\"></label><br><hr>" +
+        "<label>Ciudad de "+tipoReferencia+" para párrafo "+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]"+"[" + (++n) + "]" + "[ciudad]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"Ciudad\" class = \"contenidos\"></label><br><hr>" +
 
         "<label>País de"+tipoReferencia+" para párrafo "+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]"+"[" + (++n) + "]" + "[pais]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"País\" class = \"contenidos\"></label><br><hr>" +
 

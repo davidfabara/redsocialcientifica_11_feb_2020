@@ -15,9 +15,10 @@
     <?php foreach($post as $clave=>$posts): ?>
     <?php if($clave<count($post)):?>
     <article class="publicacion">
-    <label for="<?php echo 'speech_post'.$clave; ?>" onclick="reproducir_contenido(<?php echo $clave; ?>)"><strong>Publicación <?php echo $clave+1; ?>📢</strong></label>
 
-	<p class="speech-post" style="display:none;" id="<?php echo "speech_post".$clave; ?>"></p>
+        <button id="<?php echo "speech_post".$clave; ?>" class="icono_reproducible" onclick="reproducir_contenido(<?php echo $clave; ?>)"><strong>Reproducir publicación <?php echo $clave+1; ?></strong>
+        </button>
+
         <div class="publi-info-perfil">
             <table>
                 <tr>

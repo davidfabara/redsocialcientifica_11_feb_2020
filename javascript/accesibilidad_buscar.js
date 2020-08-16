@@ -21,7 +21,7 @@ function ejecutarArtyom() {
         let mensaje=document.getElementById('mensaje_buscar').value;
         artyom.say(mensaje+". Te encuentras en la sección de buscar, tienes la sección de cabecera en la parte superior,  puedes buscar en la cabecera o directamente en el segundo campo de búsqueda por título de publicación o usuario o por categoría, comando ayuda disponible");
 
-
+        document.getElementById('busqueda-buscarPHP').focus();
 };
 
 function ejecutar_ayuda() {
@@ -86,6 +86,15 @@ if (annyang) {
             ejecutar_ayuda_texto();
           
         },
+        'pausar lector': () => {
+            pausar_lector();
+        },
+        'reanudar lector': () => {
+            reanudar_lector();
+        },
+        'cancelar lector': () => {
+            cancelar_lector();
+        },
         'opción 1': () => {
             document.getElementById('vinculo_principal').click();
             
@@ -110,7 +119,7 @@ if (annyang) {
             document.getElementById('busqueda').focus();
             tipo_buscar="buscar";
             
-          artyom.say("Presionar enter para acceder si ya existe un texto asignado");
+            artyom.say("Presionar enter para acceder si ya existe un texto asignado");
 
         },
 

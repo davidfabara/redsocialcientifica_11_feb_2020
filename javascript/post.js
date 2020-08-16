@@ -22,9 +22,9 @@ function ejecutarArtyom() {
 
         */
 
-        
-        let mensaje=document.getElementById('mensaje_pagina_principal').value;
-        artyom.say(mensaje+". Te encuentras en la sección principal, en la sección de cabecera se encuentra el acceso a la página principal, una sección de búsqueda, solicitudes, notificaciones, acceso al perfil, en el cuerpo del documento se encuentra el formulario para enviar una publicación, en la parte inferior una lista de tus publicaciones. Para control por voz pronuncia 'ayuda'. ");
+        let mensaje=document.getElementById('mensaje_pagina_publicacion').value;
+
+        artyom.say(mensaje+". Te encuentras en una publicación por vínculo, en la sección de cabecera se encuentra el acceso a la página principal, una sección de búsqueda, solicitudes, notificaciones, acceso al perfil, en el cuerpo del documento se encuentras la publicación accedida. Para control por voz pronuncia 'ayuda'. ");
         /*
                document.getElementById('mensaje_sesion_destroy').innerHTML='<?php echo \'mensaje_destruido\';$_SESSION[\'mensaje\']=\'\'; ?>'; 
         */
@@ -35,13 +35,13 @@ function ejecutarArtyom() {
 
 function ejecutar_ayuda() {
 
-    artyom.say( "Te encuentras en la página principal, estructura con una cabecera con accesos directos en la parte superior, en la inferior un cuerpo del documento con la sección para subir una publicación seguido de la lista de publicaciones. Con comandos de voz pronuncia opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o solicitudes, opción 5 o noticias, opción 6 o perfil, opción 7 o cerrar , opción 8 o para ocultar o mostrar el formulario para subir publicación, opción 9 para reproducir las publicaciones existentes, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda. Disponible también comando ayuda para subir y comando ayuda para texto, adicional ayuda para sistemas híbridos, para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
+    artyom.say( "Te encuentras en la sección de una publicación, en la parte superior una cabecera con accesos directos , en la inferior un cuerpo del documento . Con comandos de voz pronuncia opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o solicitudes, opción 5 o noticias, opción 6 o perfil, opción 7 o cerrar ,  opción 8 para reproducir las publicaciones existentes, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda. Disponible también comando ayuda para subir y comando ayuda para texto, adicional ayuda para sistemas híbridos, para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
 
 }
 
-function ejecutar_ayuda_subir(){
+function ejecutar_ayuda_post(){
 
-    artyom.say('Los datos a introducir son: título, autor, fecha, categoría, resumen, introducción, contenido, conclusiones, referencias, subir archivo, y en el caso de agregar una descripción del archivo, pronuncia ese comando, al final se envia todo pronunciando, enviar publicación. Para crear varios párrafos de texto con citas, para el caso de categoría, resumen, introducción, contenido, conclusiones, referencias pronuncia. Ejemplo elemento  (seguido del número de elemento), seguido del tipo de input luego seguido de la palabra con: seguido de la información a suministrar, un ejemplo básico para crear el primer elemento de resumen sería: elemento 1 de resumen con. Seguido del dictado de texto, para crear una cita pronuncia, crear cita para, seguido del input ya sea este resumen, introducción, contenido, conclusiones. Para referencicas, pronuncia, crear referencia');
+    artyom.say( "Te encuentras en la sección de una publicación, en la parte superior una cabecera con accesos directos , en la inferior un cuerpo del documento . Con comandos de voz pronuncia opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o solicitudes, opción 5 o noticias, opción 6 o perfil, opción 7 o cerrar ,  opción 8 para reproducir las publicaciones existentes, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda. Disponible también comando ayuda para subir y comando ayuda para texto, adicional ayuda para sistemas híbridos, para recibir más ejemplos, pronuncia, ayuda de ejemplos");  
 }
 function ejecutar_ayuda_texto(){
 
@@ -49,11 +49,11 @@ function ejecutar_ayuda_texto(){
 }
 
 function ejecutar_ayuda_ejemplos(){
-    artyom.say("Los comandos de voz implican pronunciar palabras lentamente y de forma correcta, como ejemplos. 1. Para crear un texto de prueba, invocamos al comando de voz pronunciando crear texto, en este caso el texto herramientas de accesibilidad, notar que se puede seguir invocando el texto , podemos corregirlo pronunciando corregir texto, esta instrucción nos dará pautas para corregir ese texto. 2. Para deletrear, pronunciar deletrear seguido de la letra a invocar, ejemplo para construir la palabra Fabara lo hacemos con deletrear F mayúscula,  luego deletrear a, luego deletrear b grande, luego deletrear a, luego deletrear ere, luego deletrear a. 3. Para agregar texto en un elemento concreto de forma compleja, por ejemplo al crear una cita para resumen tendremos varios campos nuevos el texto a ingrezar en el 2do elemento de la sección del resumen el texto, texto escrito, pronunciamos elemento 2 de resumen con texto escrito");
+    artyom.say("Los comandos de voz implican pronunciar palabras lentamente y de forma correcta, como ejemplos. 1. Para crear un texto de prueba, invocamos al comando de voz pronunciando crear texto, en este caso el texto herramientas de accesibilidad, notar que se puede seguir invocando el texto , podemos corregirlo pronunciando corregir texto, esta instrucción nos dará pautas para corregir ese texto. 2. Para deletrear, pronunciar deletrear seguido de la letra a invocar, ejemplo para construir la palabra Fabara lo hacemos con deletrear F mayúscula,  luego deletrear a, luego deletrear b grande, luego deletrear a, luego deletrear ere, luego deletrear a. 3. Para agregar texto en un elemento concreto de forma compleja , por ejemplo al crear una cita para resumen tendremos varios campos nuevos el texto a ingrezar en el 2do elemento de la sección del resumen el texto, texto escrito, pronunciamos elemento 2 de resumen con texto escrito");
 
 }
 function ejecutar_ayuda_sistema_hibrido(){
-    artyom.say("Para utilizar el teclado braille para suministrar texto y para enfocar elementos con la voz, pronuncia ejemplo, enfocar elemento 1 de resumen, esto posicionará el cursor en el primer elemento de la categoría de resumen, esto aplica para cualquier input concreto");
+    artyom.say("Para utilizar el teclado braille para suministrar texto y para enfocar elementos con la voz, pronuncia ejemplo, enfocar elemento 1 de comentario, esto posicionará el cursor en el primer elemento de la categoría del comentario presente en una publicación, esto aplica para cualquier input concreto");
 }
 
 function correccion(num, val){
@@ -96,8 +96,8 @@ if (annyang) {
           
 
         },
-        'ayuda para subir': () => {
-            ejecutar_ayuda_subir();
+        'ayuda para post': () => {
+            ejecutar_ayuda_post();
           
         },
         'ayuda para texto': () => {
@@ -233,18 +233,9 @@ if (annyang) {
             //document.getElementById('info-solicitud').click();
      
         },
+ 
         'opción 8': () => {
-            mostrar_subir();
-          
-
-        },
-        'subir publicación': () => {
-            mostrar_subir();
-          
-
-        },
-        'opción 9': () => {
-            console.log("opción 9 ejecutado");
+            console.log("opción 8 ejecutado");
             artyom.say("Pronunciar, reproducir publicación, seguido del número de publicación, ejemplo, reproducir publicación 1");
             
             
@@ -253,82 +244,7 @@ if (annyang) {
         },
 
 
-        'título *value': (value) => {
 
-            artyom.say("Ingresado "+value+" en el campo título");
-            document.getElementById('titulo').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('titulo').focus();
-
-        },
-        'autor *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el campo autor");
-            document.getElementById('autor').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('autor').focus();
-
-        },
-        'fecha *value': (value) => {
-           
-            artyom.say("El campo fecha tiene la fecha actual asignada, pero puedes modificarla manualmente");
-            document.getElementById('fecha').value=value;
-            document.getElementById('fecha').focus();
-
-        },
-        'categoría *value': (value) => {
-           
-            artyom.say(" Pronuncia categoría seguido del número : 1 para  ciencias generales, 2 para ingeniería, 3 para ciencias sociales, 4 para biología, medicina");
-
-            clave=parseInt(clave.charAt(0)); /* Conversión a entero */
-            value=value.replace('uno','1').replace('un','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9').replace(' ','');
-            value=parseInt(value.charAt(0)); /* Conversión a entero */
-            value=value-1;
-            document.getElementById('opcion2').focus();
-
-            if(value==0||value==1||value==2||value==3){
-                document.getElementById('categoria').children[value].selected=true;
-            }
-                
-            
-
-            artyom.say("seleccionado la opción "+(value+1));
-            console.log("seleccionado la opción "+(value+1));
-
-        },
-        'resumen *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el primer elemento de resumen");
-            document.getElementById('resumen').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('resumen').focus();
-
-        },
-        'introducción *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el primer elemento de introducción");
-            document.getElementById('introduccion').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('introduccion').focus();
-
-        },
-        'contenido *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el primer elemento de contenido");
-            document.getElementById('contenido').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('contenido').focus();
-
-        },
-        'conclusiones *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el primer elemento de conclusiones");
-            document.getElementById('conclusiones').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('conclusiones').focus();
-
-        },
-        'referencias *value': (value) => {
-  
-            artyom.say("Ingrezado "+value+" en el primer elemento de referencias");
-            document.getElementById('referencias').value=value.charAt(0).toUpperCase() + value.slice(1);
-            document.getElementById('referencias').focus();
-
-        },
         'deletrear *value': (value) => {
 
             /* Técnicas para mejorar la presición de la síntesis de voz para escritura de frases, palabras o letras concretas */
@@ -474,35 +390,15 @@ if (annyang) {
         },
         
         'dónde estoy': () => {
-            artyom.say("Estas en la sección principal, comando ayuda disponible");
+            artyom.say("Estas en la sección de una publicación, comando ayuda disponible");
           
 
         },
-        'acceder': () => {
-            $("#submit-input").click();
-
-        }, // Para invocar todos los imput de registro
+ 
 
         'elemento *num de *tipoInput con *val': (num,tipoInput,val) => {
             /* Se puede escribir en los inputs del formulario y sobre los comentarios de una publicación */
-            val=val.charAt(0).toUpperCase() + val.slice(1);
-            if(tipoInput==="titulo"||tipoInput==="Titulo"||tipoInput==="título"||tipoInput==="Título")
-                invocar_input_formulario('titulo', num, val);
-            if(tipoInput==="autor"||tipoInput==="Autor")
-                invocar_input_formulario('autor', num, val);
-            if(tipoInput==="fecha"||tipoInput==="Fecha"||tipoInput==="fecha de publicación"||tipoInput==="Fecha de publicación")
-                invocar_input_formulario('fecha', num, val);
-            if(tipoInput==="resumen"||tipoInput==="Resumen")
-                invocar_input_formulario('resumen', num, val);
-            if(tipoInput==="introducción"||tipoInput==="Introducción"||tipoInput==="introduccion"||tipoInput==="Introduccion")
-                invocar_input_formulario('introduccion', num, val);
-            if(tipoInput==="contenido"||tipoInput==="Contenido")
-                invocar_input_formulario('contenido', num, val);
-           
-            if(tipoInput==="conclusiones"||tipoInput==="Conclusiones")
-                invocar_input_formulario('conclusiones', num, val);
-            if(tipoInput==="referencias"||tipoInput==="Referencias")
-                invocar_input_formulario('referencias', num, val);
+
             if(tipoInput==="comentario"||tipoInput==="Comentario")
                 invocar_input_formulario('comentario', num, val);
               
@@ -512,28 +408,15 @@ if (annyang) {
             /* Para enfocar en algún input, útil para sistemas híbridos de accesibilidad */
 
             
-            if(tipoInput==="titulo"||tipoInput==="Titulo"||tipoInput==="título"||tipoInput==="Título")
-                tipoInput='titulo';
-            if(tipoInput==="autor"||tipoInput==="Autor")
-                tipoInput='autor';
-            if(tipoInput==="fecha"||tipoInput==="Fecha"||tipoInput==="fecha de publicación"||tipoInput==="Fecha de publicación")
-                tipoInput='fecha';
-            if(tipoInput==="resumen"||tipoInput==="Resumen")
-                tipoInput='resumen';
-            if(tipoInput==="introducción"||tipoInput==="Introducción"||tipoInput==="introduccion"||tipoInput==="Introduccion")
-                tipoInput='introduccion';
-            if(tipoInput==="contenido"||tipoInput==="Contenido")
-                tipoInput='contenido';
-           
-            if(tipoInput==="conclusiones"||tipoInput==="Conclusiones")
-                tipoInput='conclusiones';
-            if(tipoInput==="referencias"||tipoInput==="Referencias")
-                tipoInput='referencias';
+ 
             if(tipoInput==="comentario"||tipoInput==="Comentario")
                 tipoInput='comentario';
 
             num=num.trim();
-            num=num.replace('uno','1').replace('un','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
+            if(num==='una'){
+     
+             num=num.replace('una','1');
+            }else{}
             console.log("tipoInput es:"+tipoInput+", num ="+num);
             var espacio=" ";
              if(tipoInput==="comentario"){
@@ -568,32 +451,10 @@ if (annyang) {
                 val=texto;
             if(tipoText==="deletrear")
                 val=deletreo;
-            if(tipoInput==="titulo"||tipoInput==="Titulo"||tipoInput==="título"||tipoInput==="Título")
-                invocar_input_formulario('titulo', num, val);
-            if(tipoInput==="autor"||tipoInput==="Autor")
-                invocar_input_formulario('autor', num, val);
-            if(tipoInput==="fecha"||tipoInput==="Fecha"||tipoInput==="fecha de publicación"||tipoInput==="Fecha de publicación")
-                invocar_input_formulario('fecha', num, val);
-            if(tipoInput==="resumen"||tipoInput==="Resumen")
-                invocar_input_formulario('resumen', num, val);
-            if(tipoInput==="introducción"||tipoInput==="Introducción"||tipoInput==="introduccion"||tipoInput==="Introduccion")
-                invocar_input_formulario('introduccion', num, val);
-            if(tipoInput==="contenido"||tipoInput==="Contenido")
-                invocar_input_formulario('contenido', num, val);
-           
-            if(tipoInput==="conclusiones"||tipoInput==="Conclusiones")
-                invocar_input_formulario('conclusiones', num, val);
-            if(tipoInput==="referencias"||tipoInput==="Referencias")
-                invocar_input_formulario('referencias', num, val);
+
             if(tipoInput==="comentario"||tipoInput==="Comentario")
                 invocar_input_formulario('comentario', num, val);
               
-
-        },
-        'enviar publicación': () => {
-            artyom.say("Publicación enviada");
-            document.getElementById('subir-submit').click();
-           
 
         },
 
@@ -617,41 +478,7 @@ if (annyang) {
 
 
         },
-        'cita *tipoTextArea elemento *numElement': (tipoTextArea, numElement) => {
-            if(tipoTextArea==='resumen'){
-                document.getElementById('opcion'+numElement+"_"+"0").click();
 
-            }
-            if(tipoTextArea==='introducción'){
-                document.getElementById('opcion'+numElement+"_"+"1").click();
-
-            }
-            if(tipoTextArea==='contenido'){
-                document.getElementById('opcion'+numElement+"_"+"2").click();
-            }
-
-            if(tipoTextArea==='conclusiones'){
-                document.getElementById('opcion'+numElement+"_"+"3").click();
-            }
-            artyom.say("Cita creada para "+tipoTextArea);
-
-
-        },
-        'referencias elemento *numElement': (numElement) => {
-
-                document.getElementById('opcion'+numElement+"_ref_"+"0").click();
-                artyom.say("Referencia creada  , con selección de elemento "+numElement);
-
-            /* TODO: */
-
-        },
-        'crear referencia': () => {
-            artyom.say("Hay 2 referencias existentes, para crear una referencia específica, pronunciar ejemplo referencias elemento 1, para libro con autor, 2, para libro con editor");
-            /* TODO: */
-            document.getElementById('citarRef2').click();
-
-
-        },
         'poner okay en publicación *num': (num) => {
 
             invocar_input_formulario('elementoOk', num, '');
@@ -661,7 +488,7 @@ if (annyang) {
             invocar_input_formulario('elementoDenuncia', num, '');
         },
         'reproducir publicación *value': (value) => {
-            var value=value.replace('uno','1').replace('un','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
+            var value=value.replace('uno','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
             if(value==='diez'||value==='10'){
                 reproducir_publicacion(9);
             }else{
@@ -669,16 +496,7 @@ if (annyang) {
                 reproducir_publicacion(value-1);
             }
         },
-        'descripción de archivo *value': (value) => {
 
-            /* TODO: */
-            document.getElementById('descripcionArchivos').click();
-            document.getElementById('alt_descripcion').value=value.charAt(0).toUpperCase() + value.slice(1);
-
-            document.getElementById('alt_descripcion').focus();
-            artyom.say("Enfocado en el campo de la descripción, se ha ingresado: "+value);
-
-        },
     };
 
     function reproducir_publicacion(value){
@@ -693,7 +511,12 @@ if (annyang) {
     function invocar_input_formulario(tipoInput,num,val){
 
        num=num.trim();
-       num=num.replace('uno','1').replace('un','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
+       if(num==='una'){
+
+        num=num.replace('una','1').replace('un','1');
+       }else{
+       
+       }
        console.log("tipoInput es:"+tipoInput+", num ="+num+", val="+val);
        var espacio=" ";
         if(tipoInput==="comentario"){

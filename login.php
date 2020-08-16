@@ -55,10 +55,10 @@
 						*/ 
 
 					}else{
-						$_SESSION['mensaje'] = 'Usuario correcto pero contraseña incorrecta, volver a intentar';
+						$_SESSION['mensaje'] = 'Tu último acceso de Usuario correcto pero contraseña incorrecta, volver a intentar';
 					}
 				}else{
-				$_SESSION['mensaje'] = 'Usuario y contraseña incorrecta, volver a intentar';
+				$_SESSION['mensaje'] = 'Tu último acceso de Usuario y contraseña incorrecta, volver a intentar';
 				}
 			}
 		}
@@ -77,26 +77,35 @@
 	<script src="javascript/librerias/jquery3.4.1_min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 	<script src="https://code.responsivevoice.org/responsivevoice.js?key=7RpgTxHY"></script>
-
+	<script type="text/javascript" src="javascript/accesibilidad_reproducir_contenido.js"></script>
 	<script src="javascript/accesibilidad_login.js"></script>
+
 </head>
+<div class="botones_lector_reproduccion">
+		<h1>Lector</h1>
+		<button id="boton_pausar" class="boton_lector" onclick="pausar_lector()">Pausar</button>
+		<button id="boton_reanudar" class="boton_lector" onclick="reanudar_lector()">Reanudar</button>
+		<button id="boton_cancelar" class="boton:lector" onclick="cancelar_lector()">Cancelar</button>	
+</div>
 <body>
+
 	<div class="contenedor-form">
 	<?php /*Notar que usamos los mismos estilos en login.php así lo queremos usando la misma clase referenciada tambien desde login.php así como registro.php*/ ?>
-	<p id="login-sms-oculto" onclick="ejecutar_ayuda_login()" class="icono_reproducible"><strong>Ayuda📢</strong></p>
+	<button id="login-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_login()">Ayuda</button>
+
 	<input type="hidden" id="mensaje_login" value="<?php echo $_SESSION['mensaje'];?>">
-	<h1>Login</h1>
+		<h1>Login</h1>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<label for="login-usuario"><strong>Usuario:</strong></label>
-		<input type="text" name="usuario" id="login-usuario" class="input-control" placeholder="<?php echo "usuario";/*Funciona exactamente que placeholder=usuario */ ?>"> 
-		<label for="password-input"><strong>Password:</strong></label>
+			<label for="login-usuario"><strong>Usuario:</strong></label>
+			<input type="text" name="usuario" id="login-usuario" class="input-control" placeholder="<?php echo "usuario";/*Funciona exactamente que placeholder=usuario */ ?>"> 
+			<label for="password-input"><strong>Password:</strong></label>
 			<input type="password" name="pass" class="input-control" placeholder="Password" id="password-input">
 			<input type="submit" value="Acceder" id='submit-input' name="acceder"  class="log-btn">
 		</form>
 		<div class="registrar">
 		<?php /*Notar que usamos los mismos estilos en login.css para dar ese color verde obscuro al ícono de acceder*/ ?>
 			<a id="link_a_registro" href="registro.php" class="enlace-boton">Ir a registro</a>
-			<?php /*Un link vinculable hacia registro.php en el caso de pese a estar en login, poder registrarse*/ ?>
+		<?php /*Un link vinculable hacia registro.php en el caso de pese a estar en login, poder registrarse*/ ?>
 		</div>
 	</div>
 </body>

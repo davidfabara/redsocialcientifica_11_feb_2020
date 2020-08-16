@@ -15,6 +15,7 @@ class usuarios{
 								  ':foto_perfil' => 'img/sin foto de perfil.jpg'
 							));
 		/*Notar que con prepare se prepara la conexion y con $consulta->execute se ejecuta la consulta con un array asociativo recordando que el parámetro $datos en esta función registrar contiene un array de todos los datos del formulario de registro del usuario */
+
 	}
 
 

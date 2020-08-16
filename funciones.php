@@ -59,7 +59,7 @@ function fechaPost(){
 }
 
 function tiempo_sesion_mensaje(){
-	$limite = 10;
+	$limite = 3;
 	if(isset($_SESSION['tiempo']) ) {
 		$sesion_actual = time() - $_SESSION['tiempo'];
 			if($sesion_actual > $limite)
@@ -71,6 +71,16 @@ function tiempo_sesion_mensaje(){
 		}
 	 
 
+}
+
+function comprobar_captcha($value){
+	$baseDeRespuestas=array("marlon", "no", "14","1", "odad", "aeia","eao", "120", "si", "si");
+
+	if (in_array($value, $baseDeRespuestas, true)){
+		return true;
+	}else{
+		return false;
+	}
 }
 		
 	

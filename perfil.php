@@ -110,14 +110,21 @@ if (isset($_GET['denuncia'])) {
 ?>
 
 <script src="javascript/accesibilidad_perfil.js"></script>
+<button id="perfil-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda()"><center>Ayuda</center></button>
+			<button id="subir-sms-oculto" class="icono_reproducible" onclick="reproducir_detalle_perfil(0)">Detalle de perfil</button>
 <div id="perfil">
+	
+
+	
     <ul>
-        <li><img src="<?php echo $usuario[0]['foto_perfil']; ?>" alt="<?php echo " El nombre del usuario es:" .
+        <li>	
+
+			<img src="<?php echo $usuario[0]['foto_perfil']; ?>" alt="<?php echo " El nombre del usuario es:" .
                 $usuario[0]['nombre']; ?>" id="img"></li>
         <li>
-            <h3>
+            <h1>
                 <?php echo $usuario[0]['nombre']; ?>
-            </h3>
+            </h1>
             <ul>
                 <li><strong>Discapacidad Visual♿️ :</strong><span>
                         <?php echo $usuario[0]['discapacidad']; ?></span></li>
@@ -159,8 +166,7 @@ if (isset($_GET['denuncia'])) {
         <li>
 		
 			<a id= "edit_perfi" class="editar-acceso" href="editar_perfil.php">Editar</a>
-			<label for="subir-sms-oculto" onclick="reproducir_detalle_perfil(0)"><strong>  Detalle de perfil📢</strong></label>
-			<h1 class="speech-post" style="display:none;" id="subir-sms-oculto"></h1>
+
 		</li>
 		
 		<?php 

@@ -8,5 +8,4 @@
 		//$_SESSION['mensaje']="";
 		//style='display:none;'
 	}
-
 ?>

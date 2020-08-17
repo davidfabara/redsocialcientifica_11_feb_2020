@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 if(isset($_SESSION['CodUsua']))
 {
     /* Esto elimina todas las variables de una SESION :
@@ -11,6 +10,4 @@ if(isset($_SESSION['CodUsua']))
 	session_destroy(); /*TODO:Eliminará toda la SESION */
 	header('location: login.php'); /* Para recargar la página y devolverle el control a login.php */
 }
-
-
  ?>

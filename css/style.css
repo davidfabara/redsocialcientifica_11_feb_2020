@@ -5,7 +5,13 @@
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	
+	font-size:20px;
+}
+
+h1 {
+	font-size: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 body{
@@ -24,7 +30,7 @@ body{
 .botones_lector_reproduccion{
 	/*position: fixed;
 	top: 0;*/
-	zoom: 80%;
+	zoom: 1.3;
 	box-sizing: border-box;
 	width: 100%;
 	background:rgba(19, 17, 14, 0.719);
@@ -33,9 +39,11 @@ body{
 	/*#2c3e50*/
 	padding: 0.5px;
 	padding: 0.5% 05%;
-	
 	 /*z-index: 100;*/
 
+}
+.boton_lector {
+	height: 10%;
 }
 .boton_lector:hover{
 	outline-style: none;
@@ -80,16 +88,12 @@ header{
 	/*#2c3e50*/
 	padding: 2px;
 	padding: 1% 1%;
-	
 	 /*z-index: 100;*/
-
 }
 
 header  .titulo{
 	display: inline-block;
 	color: rgba(0, 0, 0, 0.719);
-   
-
 }
 
 nav{
@@ -103,12 +107,10 @@ nav{
 	width: 50%;
 	height:10%;
 	margin-left: 10px;
-	
 	color: black;
 	font-size: 1em;
 }
 #buscar label {
-	
 	display: inline-block;
 	width: 70%;
 	color: rgb(0, 0, 0);
@@ -119,27 +121,22 @@ nav{
 	display: inline-block;
 	width: 50%;
 	height:15%;
-	
-
 	color: black;
 	font-size: 1em;
-	
-
 }
 
 #buscar input:focus{
 	outline: none;
-	font-size: 4em;
+	font-size: 3em;
     width: 70%;
     z-index: 2;
     box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
     /*float:left;*/
     text-align: left;
-    
-	
 }
 
-nav > ul > li{			
+nav > ul > li{		
+	margin-top: 20px;	
 	list-style: none;
 	float: left;
 	position: relative;
@@ -154,7 +151,7 @@ nav ul li>span
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0.719);
 	border-radius: 3px;
-	font-size: 1em;   /*10px 5px 7px 5px*/
+	font-size: 1.4em;   /*10px 5px 7px 5px*/
 	font-weight: bold;
 }
 
@@ -189,15 +186,10 @@ header nav .no-leido{
 	margin-right: 5px;
 	margin-left: 4px;
 	padding: 0px 4px;
-	
 	font-weight: bold;
 	z-index: 1;
     
 }
-
-
-/*********************************************/
-
 
 /******************************************************
 *********   SOLICITUD DE AMISTAD   *******
@@ -247,7 +239,6 @@ header nav #info-solicitud:hover #nav-solicitud{
     border-color: transparent transparent rgba(216, 191, 137, 0.719) transparent;
 } 
 
-
 #solicitud-confirmar{
 	width: 90%;
 }
@@ -255,8 +246,6 @@ header nav #info-solicitud:hover #nav-solicitud{
 #solicitud-confirmar li{
 	display: inline-block;
 }
-
-
 
 /*****************************************************
 ************    INFO NOTIFICACIONES      *************
@@ -292,8 +281,6 @@ header nav #info-notificaciones:hover #nav-notificaciones{
 	 color: #2c3e50;
 }
 
-
-
 #nav-notificaciones li a:hover, #nav-notificaciones li a:hover p{
 	background: #2c3e50;
 	color: rgba(255, 255, 255, 0.719);
@@ -315,9 +302,7 @@ header nav #info-notificaciones:hover #nav-notificaciones{
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent rgba(216, 191, 137, 0.719) transparent;
-    
 } 
-
 
 /******************************************************
 ****************LISTA ABAJO****************************
@@ -339,8 +324,6 @@ header nav #info-notificaciones:hover #nav-notificaciones{
 
 header nav .info_usuario:hover #nav-perfil{
 	visibility: visible;
-   
-    
 }
 
 #nav-perfil li{
@@ -374,7 +357,6 @@ header nav .info_usuario:hover #nav-perfil{
 ****************   PERFIL    *************************
 ******************************************************/
 
-
 #perfil{
 	margin: 10px auto;
 	/*background: rgba(216, 191, 137, 0.719);*/
@@ -396,7 +378,6 @@ header nav .info_usuario:hover #nav-perfil{
 	
 }
 
-
 #perfil > ul > li > ul li{
 	list-style: none;
 	margin-top: 20px;
@@ -409,7 +390,6 @@ header nav .info_usuario:hover #nav-perfil{
 	width: 100%;
 	font-size: 2em
 }
-
 
 #perfil #img{
 	width: 150px;
@@ -425,7 +405,6 @@ header nav .info_usuario:hover #nav-perfil{
     box-shadow: 18px 25px 25px rgba(0, 0, 0, 0.49);
     z-index: auto;
 }
-
 
 #perfil > ul li a.editar-acceso{
 	padding: 2% 3%;
@@ -452,8 +431,6 @@ float: right;
     
 }
 
-
-
 #perfil > ul li >span{
     position:absolute;
 	padding: 3px;
@@ -464,17 +441,9 @@ float: right;
 }
 
 
-
-
-
 /********************************************************************************
 ***************************   PUBLICACION    ************************************
 ********************************************************************************/
-
-
-
-
-
 
 .publicacion{
 	text-align: justify;
@@ -487,8 +456,7 @@ float: right;
 	border: 1px solid #ccc;
 	overflow: hidden;
     font-size: 30px;
-    box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
-    
+    box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);  
 }
 .publicacion:hover{
 
@@ -579,8 +547,6 @@ publi-info-perfil .publi-img-perfil :hover{
     box-shadow: 30px 35px 40px rgba(0, 0, 0, 0.44);
 }
 
-
-
 .publi-contenido{
 	margin: 5px 5px 10px 10px;
 	font-style: inherit;
@@ -589,10 +555,6 @@ publi-info-perfil .publi-img-perfil :hover{
 	font-weight: lighter;
 	font-family: 'proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
 }
-
-
-
-
 
 .publicacion .like{
 	padding: 15px;
@@ -604,7 +566,6 @@ publi-info-perfil .publi-img-perfil :hover{
 	font-size: 27px;
     
 }
-
 
 .publicacion .like a:hover{
 	text-decoration: underline;
@@ -651,13 +612,7 @@ publi-info-perfil .publi-img-perfil :hover{
 	color: rgb(55, 35, 168);
 
 	font-weight: bold;
-
-
-
 }
-
-
-
 .comentario-nombre .comentarios{
 	font: inherit;
 	font-size: 1em;
@@ -679,15 +634,9 @@ publi-info-perfil .publi-img-perfil :hover{
 	max-width: 100%;
 }
 
-
-
-
-
-
 /******************************************************
 ****************SUBIR DOCUMENTOS****************************
 ******************************************************/
-
 
 .subir{
 	width: 80%;
@@ -699,8 +648,6 @@ publi-info-perfil .publi-img-perfil :hover{
 	box-shadow: 40px 35px 40px rgba(0, 0, 0, 0.44);
 }
 
-
-
 .subir form{
 	border-top: 1px solid #2c3e50;
 
@@ -709,8 +656,6 @@ publi-info-perfil .publi-img-perfil :hover{
 	outline: none;
 	font-size: 70px;
 }
-
-
 
 .subir .contenidos{
 	padding: 5px;
@@ -730,8 +675,6 @@ publi-info-perfil .publi-img-perfil :hover{
     /*Al mantener presionado se puede aumentar el tamaño del espacio para ingrezar texto*/
 }
 
-
-
 .boton{
    background:  rgba(192, 152, 67, 0.719);
 	color: rgba(0, 0, 0, 0.719);
@@ -743,7 +686,6 @@ publi-info-perfil .publi-img-perfil :hover{
 	margin-left: auto;
   	margin-right: auto; 
 }
-
 
 .boton:hover{
 	background:  rgba(192, 152, 67, 0.719);
@@ -774,12 +716,9 @@ publi-info-perfil .publi-img-perfil :hover{
 	font-size: 2em;
 }
 
-
-
 /************************************************************************
 ****************BUSCAR:  USUARIO ****************************************
 ************************************************************************/
-
 
 .resultados-busqueda{
 	width: 50%;
@@ -789,7 +728,6 @@ publi-info-perfil .publi-img-perfil :hover{
 }
 
 .resultados-busqueda .usuarios{
-
 	background: rgba(216, 191, 137, 0.719);
 	width: 100%;
 	margin: auto;
@@ -805,8 +743,6 @@ publi-info-perfil .publi-img-perfil :hover{
 		width: 100%;
 		border-bottom: 1px solid #ddd;
 }
-
-
 
 .resultados-busqueda .img img{
 	margin-top: 10px;
@@ -846,10 +782,7 @@ publi-info-perfil .publi-img-perfil :hover{
 	font-size:1em;
 	margin-left: 10px;
 	margin-top:50px;
-	margin-bottom: 100px;
-
-	
-	
+	margin-bottom: 100px;	
 }
 
 #buscar_completo input{
@@ -872,9 +805,6 @@ publi-info-perfil .publi-img-perfil :hover{
     box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.44);
     /*float:left;*/
 	text-align: left;
-
-    
-	
 }
 
 
@@ -935,8 +865,6 @@ box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
 	width: 100px;
 }
 
-
-
 .contenedor-usuarios-mensajes  ul li .nombre{
 	font-size: 16px;
 	font-weight: bold;
@@ -945,18 +873,15 @@ box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
 	color: #2c3e50;
 }
 
-
 .contenedor-usuarios-mensajes ul .mensajes{
 	color: #A4A4A4;
 	font-size: 13px;
 
 }
 
-
 /**************************************************
 ************	MENSAJES	***********************
 **************************************************/
-
 
 #contenedor-mensajes{
 	float: left;
@@ -1005,7 +930,6 @@ box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
 	height: 51px;
 }
 
-
 #contenedor-mensajes #contenedor-form-mensaje form{
 	
 	width: 90%;
@@ -1025,4 +949,6 @@ box-shadow: -1px 10px 23px 1px rgba(0,0,0,0.68);
 #contenedor-mensajes #contenedor-form-mensaje form input:focus{
 	outline: none;
 }
-
+/**/
+a { color: #000000; } /* CSS link color (red) */
+a:hover { background: #ebfb00;color: #000000; }

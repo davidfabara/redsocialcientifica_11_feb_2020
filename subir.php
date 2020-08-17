@@ -1,15 +1,13 @@
 <?php  /*<!--El propósito de esta sección de código es mostrarnos la interfaz incluido contenido y archivo adjunto si es una fotografía o documento con su respectivo ícono, atributos del autor de una publicación a subir  --> */ ?>
 <script type="text/javascript" src="javascript/subir.js"></script>
-
 <script src="javascript/accesibilidad_subir.js"></script>
 
 <button id="boton_mostrar_subir" class="boton">Subir publicación</button>
 <div class="subir" style="display:block;">
     <div class="publi-info-perfil">
-
         <button id="subir-sms-oculto" class="icono_reproducible" onclick="ejecutar_ayuda_subir()">Ayuda para subir</button>
         <input type="hidden" id="mensaje_pagina_principal" value="<?php echo tiempo_sesion_mensaje(); ?>">
-        <h1 class="speech-post" style="display:none;" id="subir-sms-oculto"></h1>
+
         <table>
             <tr>
                 <td><a href="perfil.php?CodUsua=<?php echo $_SESSION['CodUsua'] ?>"><img src="<?php echo $_SESSION['foto_perfil']; ?>" alt="foto de perfil de: <?php echo $_SESSION['nombre']; ?>" class="publi-img-perfil"></a>
@@ -19,9 +17,13 @@
                 </td>
                 <?php 
                 /* 	
-                    <!--Se he agregado un acceso al perfil del usuario pero solo en la sección de subir contenidos, en el ícono de perfil del mismo usuario de la actual sesión, y tambien una descripción de la foto de perfil para accesibilidad , en la siguiente parte también se establece un vínculo al perfil del usuario para el nombre-->
-                    
-                    <!--Cuando vamos a subir contenido, se cargará en la parte superior la foto de perfil y el nombre del usuario , luego en el form action, se receptará input type text y el archivo a subir-->
+                    <!--Se he agregado un acceso al perfil del usuario pero solo en la sección de subir 
+                    contenidos, en el ícono de perfil del mismo usuario de la actual sesión, y tambien una 
+                    descripción de la foto de perfil para accesibilidad , en la siguiente parte también se
+                    establece un vínculo al perfil del usuario para el nombre-->
+                    <!--Cuando vamos a subir contenido, se cargará en la parte superior la foto de perfil y 
+                    el nombre del usuario , luego en el form action, se receptará input type text y el archivo 
+                    a subir-->
                 */
                 ?>
             </tr>

@@ -10,27 +10,20 @@ var j_int = 0;
 var j_cont = 0;
 var j_conc = 0;
 var j_ref = 0;
-
 var y=0;
 var y_res=0; var y_int=0; var y_conte=0; var y_conc=0;
-
-
-
 function iniciar() {
     boton = document.getElementById("descripcionArchivos").addEventListener("click", descripcionArchivos, false);
     /* citar_Resumen=document.getElementById( "refResumen" ).addEventListener( "click", citar,resumen, false ); */
     boton_subir = document.getElementById("boton_mostrar_subir").addEventListener("click", mostrar_subir, false);
 }
-
 function mostrar_subir() {
     var subi = document.getElementsByClassName("subir");
     if (subi[0].style.display == 'none') {
         subi[0].style.display = 'table';
         if (responsiveVoice.voiceSupport()) {
-
             responsiveVoice.speak("Formulario de publicación mostrado");
-        }
-        
+        }      
     } else {
         subi[0].style.display = 'none';
         if (responsiveVoice.voiceSupport()) {
@@ -39,8 +32,6 @@ function mostrar_subir() {
         }
     }
 }
-
-
 function descripcionArchivos() {
     descripcion = "<input type=" + '"text"' + ' name="alt"' + 'id="alt_descripcion" placeholder =' + "Descripción de archivo><br>";
     /*Si se hace click de manera iterativa, se puede invocar a varios eventos y como cadena es un acumulador, simplemente absorverá lo que tiene y aumentará lo asignado */
@@ -48,10 +39,8 @@ function descripcionArchivos() {
     document.getElementById("alt_descripcion").focus();
     /* La cadena se convierte a codigo html y se inyecta hacia el id de addDescripcionArchivos*/
 }
-
 function select_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv){
     var x;
-
     if(tipoTextArea==='resumen')
          x=0;
     if(tipoTextArea==='introduccion')
@@ -60,43 +49,32 @@ function select_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv){
         x=2;
     if(tipoTextArea==='conclusiones')
         x=3;
-    
     cita=`<hr><input type="button" value="Cita basada en el autor(Cita textual y de menos de 40 palabras)" class="boton" id="opcion1_${x}"  onclick="parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el autor(Cita textual y de menos de 40 palabras)')">
-
     <input type="button" value="Cita basada en el texto(Cita textual y de menos de 40 palabras)" class="boton" id="opcion2_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el texto(Cita textual y de menos de 40 palabras)')">
-
     <input type = "button" value = "Cita basada en el autor(Cita textual y de más de 40 palabras)" class = "boton" id="opcion3_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el autor(Cita textual y de más de 40 palabras)')">
-
     <input type = "button" value="Cita basada en el texto(Cita textual y de más de 40 palabras)" class = "boton" id="opcion4_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el texto(Cita textual y de más de 40 palabras)')">
-
     <input type = "button" value="Cita basada en el texto(parafraseo)" class = "boton" id="opcion5_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el texto(parafraseo)')">
-
     <input type = "button" value ="Cita basada en el autor(parafraseo)" class = "boton" id="opcion6_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita basada en el autor(parafraseo)')">
-
     <input type = "button" value="Autor corporativo" class = "boton" id="opcion7_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Autor corporativo')">
-
     <input type = "button" value="Anónimo" class = "boton" id="opcion8_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Anónimo')">
-
     <input type = "button" value="Cita de una cita" class = "boton" id="opcion9_${x}"
     onclick = "parrafo_citar('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Cita de una cita')">`;
 
     document.getElementsByClassName(tipoDiv+'_select')[0].innerHTML = cita;
 }
-
 function select_referencia(subir_cont,tipoTextArea, tipoInput, tipoDiv){
 
     referencia = `<hr><input type="button" value="Libro con autor" class="boton" id="opcion1_ref_${i}"  onclick="parrafo_referencias('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Libro con autor')">
 
     <input type = "button" value = "Libro con editor" class = "boton" id="opcion2_ref_${i}"
     onclick = "parrafo_referencias('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Libro con editor')">
-
     <input type = "button" value = "Libro en versión electrónica" class = "boton" id="opcion3_ref_${i}"
     onclick = "parrafo_referencias('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Libro en versión electrónica')">
     <input type = "button" value = "DOI" class = "boton" id="opcion4_ref_${i}"
@@ -139,14 +117,11 @@ function select_referencia(subir_cont,tipoTextArea, tipoInput, tipoDiv){
     onclick = "parrafo_referencias('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Grabación de música')">
     <input type = "button" value = "Fotografias" class = "boton" id="opcion23_ref_${i}"
     onclick = "parrafo_referencias('${subir_cont}','${tipoTextArea}','${tipoInput}','${tipoDiv}','Fotografías')">
-    
     `;
 
     /*var referencia = `<label><input type="checkbox" id="cbox1" value="first_checkbox" onclick="referencia('${tipoTextArea}','${tipoInput}','${tipoDiv},'libro con autor')"> Libro con autor</label><br><input type="checkbox" id="cbox2" value="second_checkbox" onclick="referencia('${tipoTextArea}','${tipoInput}','${tipoDiv},'libro con editor')"><label for="cbox2">Libro con editor</label>`
     ;*/
 
-                            
-    
     document.getElementsByClassName(tipoDiv+'_select')[i].innerHTML = referencia;
 }
 function parrafo_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita){
@@ -156,8 +131,6 @@ function parrafo_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita){
     if(tipoTextArea==='resumen'){
         y=y_res;
         j=j_res;
-    
-
     }
          
     if(tipoTextArea==='introduccion'){
@@ -167,16 +140,13 @@ function parrafo_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita){
         
     if(tipoTextArea==='contenido'){
         y=y_conte;
-        j=j_cont;
-        
+        j=j_cont;   
     }
     if(tipoTextArea==='conclusiones'){
         y=y_conc;
         j=j_conc;
-
     }
-        
-    
+
     var n = 0;
 
      /* Para que cada primer elemento de parrafo inicie con indice 0 */
@@ -189,10 +159,7 @@ function parrafo_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita){
         tipoTextArea1="introducción";
     }
         
-
     cita= "<label class=\"label\">Párrafo " +(y+2) + " de " +tipoTextArea1+ " hacia referencia : "+tipoCita+" (Dejar en blanco si se ingresa manualmente)</label>"+"<textarea name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (y) + "]"+"[" + (++n) + "]" + "[parrafo]"+ "\" + id=\"" + tipoTextArea + " " + (++j) + "\" class =\"contenidos\" rows=\"4\" cols=\"40\" placeholder=\"Párrafo " +(y+2) + " de " +tipoTextArea1+ " hacia referencia : "+tipoCita+" (Dejar en blanco si se ingresa manualmente)\"></textarea><br>";
-
-
 
     config_cita(subir_cont,tipoTextArea, tipoInput, tipoDiv, tipoCita,n,y,j);
 
@@ -204,19 +171,13 @@ function parrafo_citar(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita){
         y_conte++;
     if(tipoTextArea==='conclusiones')
         y_conc++;
-
-
-    
 }
 
 function parrafo_referencias(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoReferencia){
 
     /*  Puede ser reutilizable, pero ojo con el nombre de la funcion */
     var n = 0;
-
     var j=0;
-    
-
 
     if(tipoTextArea==='referencias'){
             i=i_ref;
@@ -226,7 +187,6 @@ function parrafo_referencias(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoR
     /* Para que cada primer elemento de parrafo inicie con indice 0 */
     if(i>0)
         n=-1;
-
 
     referencia= "<label class=\"label\">Párrafo " +(i+2) + " de " +tipoTextArea+ " hacia referencia : "+tipoReferencia+" (Nota: aquí puede poner la cita manualmente o un párrafo referenciado a una cita )</label>"+"<textarea name=\"" +subir_cont+ "[" +tipoTextArea + "]"+"[" + (i) + "]"+"[" + (++n) + "]" + "[parrafo]"+ "\" id=\"" + tipoTextArea +" "+ (++j) + "\" class =\"contenidos\" rows=\"4\" cols=\"40\" placeholder=\"Párrafo " +(i+2) + " de " +tipoTextArea+ " hacia referencia : "+tipoReferencia+" \"></textarea><br>";
 
@@ -285,16 +245,11 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
         artyom.say("Se ha creado un párrafo, un input que representa al apellido del autor de la opinión, el siguiente input representa al apellido del autor de la cita, el siguiente input representa al año de la publicación");
     }
 
-
-
-
     cita+= "<br><br><br><br><hr>" + "<div class=\"" + tipoDiv + "\"></div>";
 
     if(tipoTextArea==='resumen'){
         y=y_res;
         j_res=j;
-    
-
     }
          
     if(tipoTextArea==='introduccion'){
@@ -305,18 +260,14 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
     if(tipoTextArea==='contenido'){
         y=y_conte;
         j_cont=j;
-        
     }
+
     if(tipoTextArea==='conclusiones'){
         y=y_conc;
         j_conc=j;
-
     }
 
-
     document.getElementsByClassName(tipoDiv)[y].innerHTML = cita;
-
-
 
     if(document.body.contains(document.getElementById(tipoTextArea +' '+indiceInicial))){
         document.getElementById(tipoTextArea +' '+indiceInicial).focus();
@@ -325,7 +276,6 @@ function config_cita(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoCita, n, 
 
    /* Para enfocar el primer elemento creado e informar al usuario*/
 }
-
 
 function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoReferencia, n,i, j){
 
@@ -346,7 +296,6 @@ function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoRef
         "<label>País de"+tipoReferencia+" para párrafo "+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]"+"[" + (++n) + "]" + "[pais]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"País\" class = \"contenidos\"></label><br><hr>" +
 
         "<label>Editorial de"+tipoReferencia+" para párrafo "+(i+2)+"<input type=\"text\"" + " name=\"" +subir_cont+ "[" +tipoTextArea + "]"+ "[" + (i) + "]"+"[" + (++n) + "]" + "[editorial]"+"\" id=\"" + tipoTextArea +" "+ (++j) + "\" placeholder=\"Editorial\" class = \"contenidos\"></label><br><hr>" ;
-      
 
     }else
     if(tipoReferencia==="Libro con editor"){
@@ -368,8 +317,6 @@ function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoRef
         artyom.say("Solo las 2 primeras referencias disponibles, pero se creará un párrafo nuevo");
     }
 
-
-
     referencia+= "<br><br><br><br><hr>" + "<div class=\"" + tipoDiv + "\"></div>";
     if(tipoTextArea==='referencias'){
 
@@ -380,14 +327,11 @@ function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoRef
 
     document.getElementsByClassName(tipoDiv)[i].innerHTML = referencia;
 
-
         /* Comentario:
-            Si se hace click de manera iterativa, se puede invocar a varios eventos y como  (document.getElementsByClassName(tipoDiv)[i].innerHTML) que sabemos que se llama al elemento que desde un inicio esta vacio(al crearlo), simplemente absorvera lo que tiene y asignara un valor, RECORDAR que NO es una variable GLOBAL, y recordar que en tiempo de ejecucion primero se intenta llamar al  <div class=\""+tipoDiv+"\"></div> y si no existe en codigo html y dara un error pues no esta definido aun y al parecer no permite inicializar algo que aun no existe, simplemente no se prodra ejecutar, a partir del 2do elemento como ya seria un tipo DIV que seria el 2do pues los inputs de la primera ejecucion serian los primeros de su tipo, se puede invocar sin problemas este nuevo div "ya creado" pues existe, en tiempo de ejecucion siempre se crea un div que seria un grado+1 superior, desde un inicio el div cero tipoDiv solo  se sobreescribe pues ya existe  
-            
+            Si se hace click de manera iterativa, se puede invocar a varios eventos y como  (document.getElementsByClassName(tipoDiv)[i].innerHTML) que sabemos que se llama al elemento que desde un inicio esta vacio(al crearlo), simplemente absorvera lo que tiene y asignara un valor, RECORDAR que NO es una variable GLOBAL, y recordar que en tiempo de ejecucion primero se intenta llamar al  <div class=\""+tipoDiv+"\"></div> y si no existe en codigo html y dara un error pues no esta definido aun y al parecer no permite inicializar algo que aun no existe, simplemente no se prodra ejecutar, a partir del 2do elemento como ya seria un tipo DIV que seria el 2do pues los inputs de la primera ejecucion serian los primeros de su tipo, se puede invocar sin problemas este nuevo div "ya creado" pues existe, en tiempo de ejecucion siempre se crea un div que seria un grado+1 superior, desde un inicio el div cero tipoDiv solo  se sobreescribe pues ya existe    
             Esto se agregaria para otro boton de citar:
             +`<input type=\"button\" value= \"Citar\" class=\"boton\" onclick=\"citar('${tipoTextArea}', '${tipoInput}','${tipoDiv}')\">` + "<div class=\"" + tipoDiv + "\"></div>";
 
-    
         */
        if(document.body.contains(document.getElementById(tipoTextArea +' '+indiceInicial))){
         document.getElementById(tipoTextArea +' '+indiceInicial).focus();
@@ -395,8 +339,5 @@ function config_referencia(subir_cont, tipoTextArea, tipoInput, tipoDiv, tipoRef
         }
 
    /* Para enfocar el primer elemento creado  e informar al usuario*/
-
 }
-
-
 window.addEventListener("load", iniciar, false);

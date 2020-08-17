@@ -3,72 +3,49 @@
 var deletreo = "";
 var texto="";
 var siguiente="";
-
 responsiveVoice.setDefaultVoice("Spanish Latin American Female");
-
 window.addEventListener('load', ejecutarArtyom);
-
 function ejecutarArtyom() {
         artyom.initialize({
         lang: "es-ES", // idioma nativo para reproducción del lector
         continuous: false, // Evitar el reconocimiento ya que usamos la herramienta annyang
         listen: false, // Iniciar TODO: Esta variable con FALSE permite desactivar el sintetizador !
         debug: true, // Muestra un informe en la consola
-        speed: 1.0 // Velocidad normal con  1
-        
+        speed: 1.0 // Velocidad normal con  1      
         });
         document.getElementsByClassName('enlace-boton-ok').onclick=function(){artyom.say("Calificaste la publicación")};
 
         document.getElementsByClassName('enlace-boton-denuncia').onclick=function(){artyom.say("Emitiste una denuncia")};
         let mensaje=document.getElementById('mensaje_perfil').value;
         artyom.say(mensaje+". Estas en el perfil, en la cabecera está el acceso a la página principal, búsqueda, solicitudes, notificaciones, y perfil, en el cuerpo del documento se encuentra un área de los datos del perfil del usuario, en la sección inferior está la lista de publicaciones, para control por voz pronuncia 'ayuda'.");
-
-
 };
-
 function ejecutar_ayuda() {
-
     artyom.say( "Estas en el perfil, se tiene un menú superior con accesos, en el cuerpo del documento se tiene el perfil seguido de la lista de publicaciones de ese perfil con comandos de voz pronuncia: ayuda, para recibir ayuda, o detalle de perfil para escuchar los datos del perfil de visita actual, para comandos del menú superior: opción 1 o página principal, opción 2 o buscar, opción 3 o publicar, opción 4 o detalle de perfil, opción 5 o solicitudes, opción 6 o noticias, opción 7 o perfil, opción 8 o cerrar , opción 9 para acceder a la lista de publicaciones, opción 10 o editar perfil, para comentar pronunciar ayuda para comentar, para crear un texto, pronuncia ayuda para crear texto, para enviar una solicitud de amistad, pronuncia, enviar solicitud o simplemente, agregar, para poner un okay en una publicación pronuncia, poner okay en publicación uno, o dos , según corresponda, para una denuncia en una publicación pronuncia, poner denunciar en publicación uno, o dos , según corresponda.Para recibir más ejemplos, pronuncia, ayuda de ejemplos");          
-
 }
-
 function ejecutar_ayuda_texto(){
-
     artyom.say("Para crear un texto, pronunciar crear texto seguido del texto a procesar, para deletrear una frase, pronunciar deletrear seguido del carácter a procesar, para pegar la frase de deletrear con el texto, pronuncia pegar deletrear en texto,para corregir un texto creado, pronuncia, corregir texto, para el caso de pegar un texto en algún input, pronunciar pegar seguido de la palabra texto o deletrear seguido de la palabra elemento seguido del número de elemento seguido del nombre del input, ejm para pegar el texto creado en el primer comentario, sería, pegar texto en elemento 1 de comentario.");
-
-
 }
 function ejecutar_ayuda_ejemplos(){
     artyom.say("Los comandos de voz implican pronunciar palabras lentamente y de forma correcta, como ejemplos. 1. Para crear un texto de prueba, invocamos al comando de voz pronunciando crear texto, en este caso el texto herramientas de accesibilidad, notar que se puede seguir invocando el texto , podemos corregirlo pronunciando corregir texto, esta instrucción nos dará pautas para corregir ese texto. 2. Para deletrear, pronunciar deletrear seguido de la letra a invocar, ejemplo para construir la palabra Fabara lo hacemos con deletrear F mayúscula,  luego deletrear a, luego deletrear b grande, luego deletrear a, luego deletrear ere, luego deletrear a. 3. Para agregar texto en un elemento concreto de forma compleja , por ejemplo para ingrezar el comentario concuerdo con su publicación sobre la publicación 1, se hace pronunciando, elemento 1 de comentario con concuerdo con su publicación");
-
 }
 function ejecutar_ayuda_comentar(){
-
     artyom.say("Para el caso de comentar, se invoca con el comando: elemento seguido del número de elemento seguido de la palabra, de, seguido de la palabra, comentario, seguido de la palabra, con, seguido del texto libre a dictar a partir de ese momento, ejm. Elemento 1 de comentario con, seguido del valor a agregar");
 }
 function pegarDeletreo(parametro){
-
     if(deletreo != ""){
         $(parametro).val(deletreo);
     }
 }
-
 function correccion(num, val){
     /* Corregir elementos de un texto actual */
     var indice=parseInt(num)-1;
     var texto_a_corregir=texto.split(" ");
     if(val==="deletrear")
         val=deletreo;
-    
         texto_a_corregir[indice]=val;
-    
-
-
     texto=""; /* variable global texto se actualizará por completo */
     console.log("El valor de texto_a_corregir[indice] es: "+texto_a_corregir[indice]);
- 
     var aux2=texto_a_corregir;
-   
     for(var i=0;i<aux2.length;i++){
         texto+=aux2[i]+" ";
     }
@@ -76,29 +53,19 @@ function correccion(num, val){
     console.log("Posición de corrección:"+(indice+1)+", la corrección seria: "+val);
     artyom.say("Texto actual:"+texto);
     console.log("Texto actual:"+texto);
-
-
 }
-
 /* TODO: */
-
-
 if (annyang) {
     annyang.setLanguage('es-ES');
-
     var commands = {
         'ayuda': () => {
             ejecutar_ayuda();
-          
-
         },
         'ayuda para comentar': () => {
-            ejecutar_ayuda_comentar();
-          
+            ejecutar_ayuda_comentar();    
         },
         'ayuda para crear texto': () => {
-            ejecutar_ayuda_texto();
-          
+            ejecutar_ayuda_texto();      
         },
         'ayuda de ejemplos': () => {
             ejecutar_ayuda_ejemplos();
@@ -113,36 +80,24 @@ if (annyang) {
             cancelar_lector();
         },
         'leer solicitudes': () => {
-            artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);
-          
+            artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);    
         },
         'leer notificaciones': () => {
-            artyom.say(document.getElementById('notificaciones-acumuladas').value);
-          
+            artyom.say(document.getElementById('notificaciones-acumuladas').value);       
         },
-        'enviar solicitud': (value) => {
-
-
-   
-            
+        'enviar solicitud': (value) => {         
             if(document.body.contains( document.getElementById('agregar-amigo'))){
                 document.getElementById('agregar-amigo').click();
                 artyom.say("solicitud enviada");
                 console.log("solicitud enviada");
-            }
-          
+            }        
         },
-        'agregar': (value) => {
-
-
-   
-            
+        'agregar': (value) => {         
             if(document.body.contains( document.getElementById('agregar-amigo'))){
                 document.getElementById('agregar-amigo').click();
                 artyom.say("solicitud enviada");
                 console.log("solicitud enviada");
-            }
-          
+            }         
         },
         'leer comentarios de publicación *clave': (clave) => {
             /* TODO: */
@@ -150,7 +105,6 @@ if (annyang) {
             clave=parseInt(clave.charAt(0)); /* Conversión a entero */
             console.log("Lectura de comentarios de publicación "+clave);
             clave=clave-1;
-
             if(document.body.contains( document.getElementById('speech_post'+clave))){
                 if((document.getElementsByName('comentarios-acumulados')[clave].value)!==""){
                     artyom.say(document.getElementsByName('comentarios-acumulados')[clave].value);
@@ -158,175 +112,113 @@ if (annyang) {
                 }else{
                     artyom.say("No existen comentarios para la publicación"+clave);
                 }
-
             }else{
                 artyom.say("Comando no comprendido, volver a intentar");
                 console.log("Comando no comprendido, volver a intentar");
-            }
-
-          
+            }       
         },
         'opción 1': () => {
             document.getElementById('vinculo_principal').click();
-            
-          
-
         },
         'página principal': () => {
             document.getElementById('vinculo_principal').click();
-            
-          
-
         },
         'opción 2': (value) => {
             console.log("opcion2 ejecutado");
             artyom.say("Pronunciar buscar, seguido de tu parametro de búsqueda, para acceder, presionar la tecla enter");
-            
-            
-          
-
         },
-
         'buscar *value': (value) => {
             console.log("Estas buscando "+value+" presiona enter para acceder");
             artyom.say("Estas buscando "+value+" presiona enter para acceder");
-
             document.getElementById('busqueda').value=value;
             document.getElementById('busqueda').focus();;
-
-
-            
         },
         'opción 3': () => {
             console.log("Publicar");
-            document.getElementById('vinculo_principal').click();
-  
-            
+            document.getElementById('vinculo_principal').click();   
         },
         'publicar': () => {
             console.log("Publicar");
-            document.getElementById('vinculo_principal').click();
-  
-            
+            document.getElementById('vinculo_principal').click();    
         },
         'opción 4': () => {
             console.log(" Detalle del perfil");
-            reproducir_detalle_perfil(0)
-  
-            
+            reproducir_detalle_perfil(0)    
         },
         'detalle de perfil': () => {
             console.log("Perfil");
-            reproducir_detalle_perfil(0)
-  
-            
+            reproducir_detalle_perfil(0)     
         },
         'opción 5': () => {
             artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);
-     
         },
         'solicitudes': () => {
             artyom.say(document.getElementsByName('solicitudes-acumuladas')[0].value);
-     
         },
         'opción 6': () => {
             artyom.say(document.getElementById('notificaciones-acumuladas').value);
-     
         },
         'noticias': () => {
             artyom.say(document.getElementById('notificaciones-acumuladas').value);
-     
         },
         'opción 7': () => {
             console.log("Perfil ejecutado");
-
             document.getElementById('navegacion_perfil').click();
             //document.getElementById('info-solicitud').click();
-     
         },
         'perfil': () => {
             console.log("Perfil ejecutado");
-
             document.getElementById('navegacion_perfil').click();
             //document.getElementById('info-solicitud').click();
-     
         },
         'opción 8': () => {
             console.log("Cerrar ejecutado");
-
             document.getElementById('navegacion_cerrar').click();
             //document.getElementById('info-solicitud').click();
-     
         },
         'cerrar': () => {
             console.log("Cerrar ejecutado");
             artyom.say("Usted ha cerrado la sesión, desplegando a página inicial de login");
             document.getElementById('navegacion_cerrar').click();
             //document.getElementById('info-solicitud').click();
-     
         },
         'opción 9': () => {
             console.log("reproducir publicación ejecutado");
             artyom.say("Pronunciar, reporducir publicación, seguido del número de publicación, ejemplo, reproducir publicación 1");
-            
-            
-          
-
         },
         'opción 10': () => {
             console.log("Edicion perfil ejecutado");
             document.getElementById("edit_perfi").click();        
-
         },
         'editar perfil': () => {
             console.log("Edicion perfil ejecutado");
             document.getElementById("edit_perfi").click();        
-
         },
         'editar': () => {
             console.log("Edicion perfil ejecutado");
             document.getElementById("edit_perfi").click();        
-
         },
-
-
         'que está escrito': () => {
             console.log("Escrito : "+deletreo);
             artyom.say("Escrito"+deletreo);
-            
-
             /*
             $("#busqueda").trigger($.Event('keypress', { keycode: 13 }));
-            */
-            
+            */ 
         },
-
- 
         'deletrear *value': (value) => {
-            
-
             /* Técnicas para mejorar la presición de la síntesis de voz para escritura de frases, palabras o letras concretas */
-
             if(deletreo == "")
                 artyom.say("Decir palabras que evoquen el primer carácter para aumentar la presición");
-
             if(value.match("abrir paréntesis"))
                 value=value.replace(value,'(');
-
             if(value.match("cerrar paréntesis"))
                 value=value.replace(value,')');
-
             if(value.match("coma"))
                 value=value.replace(value,', ');
-
             if(value.match("punto"))
                 value=value.replace(value,'. ');
-
             if(value.match("espacio"))
                 value=value.replace(value,' ');
-
-
-
                 value=value.replace('be', 'b')
                 .replace('ce', 'c')
                 .replace('de', 'd')
@@ -346,21 +238,14 @@ if (annyang) {
                 .replace('b grande', 'b')
                 .replace('b pequeña', 'v')
                 .replace('uno','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
-    
             if (value.match("mayúscula")){
                 value=value.toUpperCase() 
-    
             }else{
                 value=value.toLowerCase()
-            }
-        
-            
+            }       
             deletreo += value.charAt(0);
-
-
            artyom.say("Dictado actual:"+deletreo);
             console.log(deletreo);
-
         },
         'crear texto *value': (value) => {
             if(texto===""){
@@ -378,7 +263,6 @@ if (annyang) {
             }else{
                 artyom.say("Deletreo actual:"+deletreo);
             }
-
             console.log(deletreo);
         },
         'leer texto':() => {
@@ -387,16 +271,13 @@ if (annyang) {
             }else{
                 artyom.say("Texto actual:"+texto);
             }
-
             console.log(texto);
         },
         'pegar deletrear en texto': (value) => {
             texto+=deletreo;
             artyom.say("Texto actual:"+texto);
             console.log("Texto actual:"+texto);
-
         },
-
         'borrar deletrear': () => {
             deletreo = '';
             console.log('Deletreo actual es:' + deletreo);
@@ -409,61 +290,45 @@ if (annyang) {
         },
         'corregir texto': () => {
             artyom.say("Decir el número donde se presente:");
-
-
             var texto_a_corregir=texto.split(" ");
             /* split crea un array con argumento separador con el espacio en blanco */
             var aux=texto_a_corregir;
             var acum="";
             for(var i=0;i<aux.length;i++){
                 acum+=" elemento "+(i+1)+" "+aux[i];
-
             /*
                 aux apunta a los elementos individuales del array texto_a_corregir
              */
             }
             artyom.say("Como ejemplo, para corregir la primera palabra, decir corregir elemento 1 con, seguido del texto a corregir. La corrección es aplicada a : "+acum);
-
             console.log("Texto para corregir, el array original es:"+texto_a_corregir);
         },
         'corregir elemento *num con *val': (num,val) => {
             correccion(num,val);
-        },
-        
+        },  
         'dónde estoy': () => {
             artyom.say("Estas en la sección principal, comando ayuda disponible");
-          
-
         },
         'acceder': () => {
             $("#submit-input").click();
-
         }, // Para invocar todos los imput de registro
         'elemento *num de *tipoInput con *val': (num,tipoInput,val) => {
             /* Se puede escribir en los inputs del formulario y sobre los comentarios de una publicación */
-
             if(tipoInput==="comentario"||tipoInput==="Comentario")
                 invocar_input_formulario('comentario', num, val);
-              
-
         },
         'pegar *tipoText en elemento *num de *tipoInput': (tipoText,num,tipoInput) => {
             if(tipoText==="texto")
                 val=texto;
             if(tipoText==="deletrear")
                 val=deletreo;
-
             if(tipoInput==="comentario"||tipoInput==="Comentario")
                 invocar_input_formulario('comentario', num, val);
-              
-
         },
         'poner okay en publicación *num': (num) => {
-
             invocar_input_formulario('elementoOk', num, '');
         },
         'poner denunciar en publicación *num': (num) => {
-
             invocar_input_formulario('elementoDenuncia', num, '');
         },
         'reproducir publicación *value': (value) => {
@@ -475,9 +340,7 @@ if (annyang) {
                 reproducir_publicacion(value-1);
             }
         },
-
     };
-
     function reproducir_publicacion(value){
         if(document.body.contains( document.getElementById('speech_post'+value))){
             reproducir_contenido(value);
@@ -486,9 +349,7 @@ if (annyang) {
                 console.log("El input es:"+value);
         }
     }
-
     function invocar_input_formulario(tipoInput,num,val){
-
         num=num.trim();
         num=num.replace('uno','1').replace('un','1').replace('una','1').replace('dos','2').replace('tres','3').replace('cuatro','4').replace('cinco','5').replace('seis','6').replace('siete','7').replace('ocho','8').replace('nueve','9');
         console.log("tipoInput es:"+tipoInput+", num ="+num+", val="+val);
@@ -496,9 +357,7 @@ if (annyang) {
          if(tipoInput==="comentario"){
              espacio="";
          }
- 
          var num=parseInt(num)-1;
-
         if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
             espacio="";
         }else{
@@ -506,14 +365,10 @@ if (annyang) {
                 num=""; espacio="";
             }
         }
-
-                 
- 
-            /* Comprobando la existencia del identificador invocado con la voz, para proceder a agregar el valor del input suministrado por invocación asociada con comando de voz 
-            
+            /* Comprobando la existencia del identificador invocado con la voz, para proceder a agregar 
+            el valor del input suministrado por invocación asociada con comando de voz 
                     valor=valor.substring(2, valor.length);
              */
- 
             if(document.body.contains( document.getElementById(tipoInput+ espacio+ num))){
                 if(tipoInput==="elementoOk"||tipoInput==="elementoDenuncia"){
                     document.getElementById(tipoInput+ num).click();
@@ -526,28 +381,23 @@ if (annyang) {
                     artyom.say("Estas escribiendo en"+ tipoInput+" elemento "+(num+1)+", con:  "+val);
                     document.getElementById(tipoInput+ espacio+ num).focus();
                 }
-    
             }else{
                     artyom.say("El imput no existe, volver a intentar");
                     console.log("El tipo input es: ("+tipoInput+") . El número de elemento es "+num+". El input  de texto es: "+val);
-    
             }
-            /* Recordar que cada estructura, tanto resumen, contenido, conclusiones, recomendaciones tienen un identificador no indexado por ello si num===0 simplemente queda vacio como si sucede con sus hijos en jerarquia del array tridimensional pero basado en el ID mas no en el nombre ejm resumen 1, el cual seria el primer elemento como hijo de resumen*/
- 
+            /* Recordar que cada estructura, tanto resumen, contenido, conclusiones, recomendaciones
+            tienen un identificador no indexado por ello si num===0 simplemente queda vacio como si sucede 
+            con sus hijos en jerarquia del array tridimensional pero basado en el ID mas no en el nombre 
+            ejm resumen 1, el cual seria el primer elemento como hijo de resumen*/
      }
     // Añadimos los comandos
-
     annyang.addCommands(commands);
-
     // Empezamos la escucha
     annyang.start();
 }
 if (!annyang) {
     console.log("El reconocimiento de voz de annyang no es compatible con el navegador");
-    
         artyom.say(
             "El reconocimiento de voz de annyang no es compatible con el navegador, se recomienda Chrome"
-        );
-
-    
+        ); 
 }
